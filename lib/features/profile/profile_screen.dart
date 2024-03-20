@@ -1,7 +1,6 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
-import 'package:blood_life/core/widgets/app_clicked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -120,7 +119,10 @@ class _ProfileSreenState extends State<ProfileSreen> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SvgPicture.asset('assets/svgs/personalcard.svg'),
+                      SvgPicture.asset(
+                        'assets/svgs/personalcard.svg',
+                        color: ManagerColor.mainred,
+                      ),
                       SizedBox(
                         width: 20.w,
                       ),
@@ -142,7 +144,10 @@ class _ProfileSreenState extends State<ProfileSreen> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SvgPicture.asset('assets/svgs/calendar.svg'),
+                      SvgPicture.asset(
+                        'assets/svgs/calendar.svg',
+                        color: ManagerColor.mainred,
+                      ),
                       SizedBox(
                         width: 20.w,
                       ),
@@ -158,7 +163,38 @@ class _ProfileSreenState extends State<ProfileSreen> {
                 ),
                 Divider(
                   height: 10.h,
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 13),
+                        child: SvgPicture.asset(
+                          'assets/svgs/guidlines.svg',
+                          color: ManagerColor.mainred,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/guidlines');
+                        },
+                        child: Text(
+                          'Guidlines',
+                          style: TextStyles.font14mainK7lysemiBold,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+
+                Divider(
+                  height: 10.h,
+                ),
               ],
             ),
           )

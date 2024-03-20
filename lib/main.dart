@@ -14,6 +14,7 @@ import 'package:blood_life/features/home/ui/notfication_screen.dart';
 import 'package:blood_life/features/home/ui/widgets/buttom_navigation_bar.dart';
 import 'package:blood_life/features/login/ui/forget_password_screen.dart';
 import 'package:blood_life/features/map/map_screen.dart';
+import 'package:blood_life/features/profile/guidline/guidlines_screen.dart';
 import 'package:blood_life/features/profile/profile_screen.dart';
 import 'package:blood_life/features/profile/setting/setting_screen.dart';
 import 'package:blood_life/features/request/ui/book_request_blood_screen.dart';
@@ -70,6 +71,7 @@ class BloodLife extends StatelessWidget {
           '/bloodtest': (context) => const BloodTest(),
           '/bloodfiltration': (context) => const BloodFiltration(),
           '/washedrbcs': (context) => const WashedRcbs(),
+          '/guidlines': (context) => const GuidlinesScreen(),
         },
 
         debugShowCheckedModeBanner: false,

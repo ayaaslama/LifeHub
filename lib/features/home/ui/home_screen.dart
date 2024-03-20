@@ -127,56 +127,56 @@ class _HomePageState extends State<HomePage> {
                       style: TextStyles.font16K7lybold),
                 ),
                 const WhatYouNeed(),
-                // Padding(
-                //   padding: const EdgeInsets.all(16.0),
-                //   child: Text("Blood Needed", style: TextStyles.font16K7lybold),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 16),
-                //   child: Container(
-                //     height: 70.h,
-                //     width: 363.w,
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(15),
-                //       color: Colors.white,
-                //       boxShadow: const [
-                //         BoxShadow(
-                //           color: Color.fromRGBO(217, 217, 217, 1),
-                //           spreadRadius: 0,
-                //           blurRadius: 4,
-                //         ),
-                //       ],
-                //     ),
-                //     child: Padding(
-                //       padding: const EdgeInsets.symmetric(horizontal: 20),
-                //       child: Row(
-                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //         children: [
-                //           Text(
-                //             'A+',
-                //             style: TextStyles.font24mainRedbold,
-                //           ),
-                //           Text(
-                //             'B+',
-                //             style: TextStyles.font24mainRedbold,
-                //           ),
-                //           Text(
-                //             'AB-',
-                //             style: TextStyles.font24mainRedbold,
-                //           ),
-                //           Text(
-                //             'A-',
-                //             style: TextStyles.font24mainRedbold,
-                //           ),
-                //           Text(
-                //             'O+',
-                //             style: TextStyles.font24mainRedbold,
-                //           )
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text("emergency", style: TextStyles.font16K7lybold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    height: 70.h,
+                    width: 363.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color.fromRGBO(217, 217, 217, 1),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'A+',
+                            style: TextStyles.font24mainRedbold,
+                          ),
+                          Text(
+                            'B+',
+                            style: TextStyles.font24mainRedbold,
+                          ),
+                          Text(
+                            'AB-',
+                            style: TextStyles.font24mainRedbold,
+                          ),
+                          Text(
+                            'A-',
+                            style: TextStyles.font24mainRedbold,
+                          ),
+                          Text(
+                            'O+',
+                            style: TextStyles.font24mainRedbold,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
@@ -191,13 +191,11 @@ class _HomePageState extends State<HomePage> {
                   nameHospital: 'Tanta Hospital',
                   time: "Time:03.00PM,21.january.2024",
                   bloodName: 'O+',
-                  image: 'assets/svgs/profile0.svg',
                 ),
                 const DonationRequest(
                   nameHospital: 'Tanta Hospital',
                   time: "Time:06.00PM,28.january.2024",
                   bloodName: 'A-',
-                  image: 'assets/svgs/profile2.svg',
                 )
               ],
             ),

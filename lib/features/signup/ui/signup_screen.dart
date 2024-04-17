@@ -23,7 +23,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
-  // Crud _crud = Crud();
+  Crud _crud = Crud();
   final TextEditingController userName = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController nationalID = TextEditingController();
@@ -42,28 +42,28 @@ class _SignUpState extends State<SignUp> {
     print('Gender: $value, Checked: $isChecked');
   }
 
-  // Future<void> _signup() async {
-  //   var response = await _crud.postRequest(
-  //       linkSignUp,
-  //       ({
-  //         "userName": userName.text,
-  //         "email": email.text,
-  //         "nationalID": nationalID.text,
-  //         "phone": phone.text,
-  //         "password": password.text,
-  //         "city": city.text,
-  //         "bloodBank": bloodBank.text,
-  //         "birthDate": birthDate.text,
-  //         "gender": gender.text,
-  //       }), (bool success) {
-  //     if (success && _formKey.currentState!.validate()) {
-  //       print("User registered successfully");
-  //       Navigator.pushNamed(context, '/verify');
-  //     } else {
-  //       print("SignUp Fail");
-  //     }
-  //   });
-  // }
+  Future<void> _signup() async {
+    var response = await _crud.postRequest(
+        linkSignUp,
+        ({
+          "userName": userName.text,
+          "email": email.text,
+          "nationalID": nationalID.text,
+          "phone": phone.text,
+          "password": password.text,
+          "city": city.text,
+          "bloodBank": bloodBank.text,
+          "birthDate": birthDate.text,
+          "gender": gender.text,
+        }), (bool success) {
+      if (success && _formKey.currentState!.validate()) {
+        print("User registered successfully");
+        Navigator.pushNamed(context, '/email_for_verify');
+      } else {
+        print("SignUp Fail");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +103,6 @@ class _SignUpState extends State<SignUp> {
                     MyTextField(
                       item: FieldItem(
                         fieldName: 'User Name',
-                        formKey: _formKey,
                         keyboardType: TextInputType.name,
                         myController: userName,
                       ),
@@ -111,7 +110,6 @@ class _SignUpState extends State<SignUp> {
                     MyTextField(
                       item: FieldItem(
                         fieldName: 'Email',
-                        formKey: _formKey,
                         myController: email,
                         keyboardType: TextInputType.emailAddress,
                       ),
@@ -119,7 +117,6 @@ class _SignUpState extends State<SignUp> {
                     MyTextField(
                       item: FieldItem(
                         fieldName: 'Phone Number',
-                        formKey: _formKey,
                         keyboardType: TextInputType.phone,
                         myController: phone,
                       ),
@@ -127,7 +124,6 @@ class _SignUpState extends State<SignUp> {
                     MyTextField(
                       item: FieldItem(
                         fieldName: 'Password',
-                        formKey: _formKey,
                         keyboardType: TextInputType.visiblePassword,
                         myController: password,
                       ),
@@ -135,7 +131,6 @@ class _SignUpState extends State<SignUp> {
                     MyTextField(
                       item: FieldItem(
                         fieldName: 'National ID',
-                        formKey: _formKey,
                         keyboardType: TextInputType.number,
                         myController: nationalID,
                       ),
@@ -153,7 +148,7 @@ class _SignUpState extends State<SignUp> {
                       bankController: bloodBank,
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 20.h,
                     ),
                     DateTextField(
                       labelText: 'Date Of Birth',
@@ -218,7 +213,10 @@ class _SignUpState extends State<SignUp> {
               AppTextButton(
                 textButton: "Sign Up",
                 onPressed: () {
-                  Navigator.pushNamed(context, '/otp_verifiction');
+                  if (_formKey.currentState!.validate()) {
+                    _signup();
+                  }
+                  //Navigator.pushNamed(context, '/otp_verifiction');
                   //Navigator.pushNamed(context, '/otp_verifiction');
                 },
                 formKey: _formKey,

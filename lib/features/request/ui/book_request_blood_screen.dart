@@ -49,49 +49,54 @@ class _BloodRegisterScreenState extends State<SearchBloodScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'Select Hospital-Center',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/detalies.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: selectHospital),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      DateTextField(
-                        labelText: 'Date Of Birth',
-                        icon: Icons.date_range,
-                        onDateSelected: (selectedDate) {
-                          // Handle the selected date
-                          print('Selected date: $selectedDate');
-                        },
-                        dateController: selectDate,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'Select Hour',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/detalies.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: selectHoure),
-                      ),
-                      const SizedBox(
-                        height: 20,
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select Hospital-Center',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/detalies.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: selectHospital),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            DateTextField(
+                              labelText: 'Date Of Birth',
+                              icon: Icons.date_range,
+                              onDateSelected: (selectedDate) {
+                                // Handle the selected date
+                                print('Selected date: $selectedDate');
+                              },
+                              dateController: selectDate,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select Hour',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/detalies.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: selectHoure),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
                       const Center(
                         child: AppTextButton(

@@ -66,7 +66,11 @@ class MyTextField extends StatelessWidget {
               return 'Invalid phone number';
             }
           }
-
+          if (item.fieldName == 'National ID') {
+            if (value.length != 14) {
+              return 'Invalid National ID';
+            }
+          }
           return null;
         },
       ),

@@ -50,53 +50,58 @@ class _BloodRegisterScreenState extends State<BookPlasmaScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      MyTextField(
-                        item: FieldItem(
-                          borderSideColor: ManagerColor.plasmaColor,
-                          fieldName: 'Select Hospital-Center',
-                          formKey: _formKey,
-                          keyboardType: TextInputType.text,
-                          useSuffixIcon: true,
-                          suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(
-                                'assets/images/detalies.png',
-                                color: ManagerColor.plasmaColor,
-                              )),
-                          myController: selectHospital,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      DateTextField(
-                        borderSideColor: ManagerColor.plasmaColor,
-                        labelText: 'Select Date',
-                        icon: Icons.date_range_rounded,
-                        iconColor: ManagerColor.plasmaColor,
-                        onDateSelected: (selectedDate) {
-                          print('Selected date: $selectedDate');
-                        },
-                        dateController: selectDate,
-                        primaryColor: ManagerColor.plasmaColor,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      MyTextField(
-                        item: FieldItem(
-                          borderSideColor: ManagerColor.plasmaColor,
-                          fieldName: 'Select Hour',
-                          formKey: _formKey,
-                          keyboardType: TextInputType.text,
-                          useSuffixIcon: true,
-                          suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(
-                                'assets/images/detalies.png',
-                                color: ManagerColor.plasmaColor,
-                              )),
-                          myController: selectHoure,
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            MyTextField(
+                              item: FieldItem(
+                                borderSideColor: ManagerColor.plasmaColor,
+                                fieldName: 'Select Hospital-Center',
+                                keyboardType: TextInputType.text,
+                                useSuffixIcon: true,
+                                suffixIcon: IconButton(
+                                    onPressed: () {},
+                                    icon: Image.asset(
+                                      'assets/images/detalies.png',
+                                      color: ManagerColor.plasmaColor,
+                                    )),
+                                myController: selectHospital,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            DateTextField(
+                              borderSideColor: ManagerColor.plasmaColor,
+                              labelText: 'Select Date',
+                              icon: Icons.date_range_rounded,
+                              iconColor: ManagerColor.plasmaColor,
+                              onDateSelected: (selectedDate) {
+                                print('Selected date: $selectedDate');
+                              },
+                              dateController: selectDate,
+                              primaryColor: ManagerColor.plasmaColor,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                borderSideColor: ManagerColor.plasmaColor,
+                                fieldName: 'Select Hour',
+                                keyboardType: TextInputType.text,
+                                useSuffixIcon: true,
+                                suffixIcon: IconButton(
+                                    onPressed: () {},
+                                    icon: Image.asset(
+                                      'assets/images/detalies.png',
+                                      color: ManagerColor.plasmaColor,
+                                    )),
+                                myController: selectHoure,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(

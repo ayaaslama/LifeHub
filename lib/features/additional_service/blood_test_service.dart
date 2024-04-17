@@ -52,66 +52,69 @@ class _BloodTestState extends State<BloodTest> {
                               color: ManagerColor.maink7ly),
                         ),
                       ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'Select Hospital-Center',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/detalies.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: selectHospital),
-                      ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'Type of Test ',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/detalies.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: sypeOfTest),
-                      ),
-                      DateTextField(
-                        labelText: 'when you need it',
-                        icon: Icons.date_range,
-                        onDateSelected: (selectedDate) {
-                          // Handle the selected date
-                          print('Selected date: $selectedDate');
-                        },
-                        dateController: selectDate,
-                      ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'Select blood-Type',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/detalies.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: selectBloodType),
-                      ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'National identity card',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/National.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: nationalIdintity),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select Hospital-Center',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/detalies.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: selectHospital),
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Type of Test ',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/detalies.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: sypeOfTest),
+                            ),
+                            DateTextField(
+                              labelText: 'when you need it',
+                              icon: Icons.date_range,
+                              onDateSelected: (selectedDate) {
+                                // Handle the selected date
+                                print('Selected date: $selectedDate');
+                              },
+                              dateController: selectDate,
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select blood-Type',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/detalies.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: selectBloodType),
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'National identity card',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/National.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: nationalIdintity),
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 30.h,

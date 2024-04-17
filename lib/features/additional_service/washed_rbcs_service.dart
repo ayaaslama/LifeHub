@@ -66,40 +66,45 @@ class _WashedRcbsState extends State<WashedRcbs> {
                               color: ManagerColor.maink7ly),
                         ),
                       ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'Select Hospital-Center',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/detalies.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: selectHospital),
-                      ),
-                      DateTextField(
-                        labelText: 'when you need it',
-                        icon: Icons.date_range,
-                        onDateSelected: (selectedDate) {
-                          // Handle the selected date
-                          print('Selected date: $selectedDate');
-                        },
-                        dateController: selectDate,
-                      ),
-                      MyTextField(
-                        item: FieldItem(
-                            fieldName: 'Select blood-Type',
-                            formKey: _formKey,
-                            useSuffixIcon: true,
-                            suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/detalies.png',
-                                  color: ManagerColor.mainred,
-                                )),
-                            myController: selectBloodType),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select Hospital-Center',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/detalies.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: selectHospital),
+                            ),
+                            DateTextField(
+                              labelText: 'when you need it',
+                              icon: Icons.date_range,
+                              onDateSelected: (selectedDate) {
+                                // Handle the selected date
+                                print('Selected date: $selectedDate');
+                              },
+                              dateController: selectDate,
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select blood-Type',
+                                  useSuffixIcon: true,
+                                  suffixIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: Image.asset(
+                                        'assets/images/detalies.png',
+                                        color: ManagerColor.mainred,
+                                      )),
+                                  myController: selectBloodType),
+                            ),
+                          ],
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0, top: 16.0),

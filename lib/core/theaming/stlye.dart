@@ -26,6 +26,10 @@ class TextStyles {
       fontSize: 16.sp,
       fontWeight: FontsWeightHelper.regular,
       color: ManagerColor.grey);
+  static TextStyle font16GreyMedium = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontsWeightHelper.medium,
+      color: ManagerColor.grey);
   static TextStyle font16GreysemiBold = TextStyle(
       fontSize: 16.sp,
       fontWeight: FontsWeightHelper.semiBold,
@@ -50,6 +54,11 @@ class TextStyles {
       fontWeight: FontsWeightHelper.bold,
       color: ManagerColor.maink7ly,
       letterSpacing: -0.3);
+  static TextStyle font22K7lybold = TextStyle(
+      fontSize: 22.sp,
+      fontWeight: FontsWeightHelper.bold,
+      color: ManagerColor.maink7ly,
+      letterSpacing: -0.3);
   static TextStyle font24K7lyMedium = TextStyle(
       fontSize: 24.sp,
       fontWeight: FontsWeightHelper.medium,
@@ -69,5 +78,10 @@ class TextStyles {
     fontSize: 24.sp,
     fontWeight: FontsWeightHelper.bold,
     color: ManagerColor.mainred,
+  );
+  static TextStyle font24k7lybold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontsWeightHelper.bold,
+    color: ManagerColor.maink7ly,
   );
 }

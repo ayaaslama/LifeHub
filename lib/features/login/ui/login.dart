@@ -22,25 +22,25 @@ class _LogInState extends State<LogIn> {
   bool _obscureText = true;
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
-  // Crud _crud = Crud();
-  // Future<void> _login() async {
-  //   var response = await _crud.postRequest(
-  //       linkLogIn,
-  //       ({
-  //         "email": email.text,
-  //         "password": password.text,
-  //       }), (bool success) {
-  //     if (success) {
-  //       print("User Login successfully");
-  //       Navigator.pushNamed(context, '/home');
-  //     } else {
-  //       print("LogIn Fail");
-  //     }
-  //   });
-  //   if (response != null && response.statusCode == 200) {
-  //     Navigator.pushNamed(context, '/home');
-  //   }
-  // }
+  Crud _crud = Crud();
+  Future<void> _login() async {
+    var response = await _crud.postRequest(
+        linkLogIn,
+        ({
+          "email": email.text,
+          "password": password.text,
+        }), (bool success) {
+      if (success) {
+        print("User Login successfully");
+        Navigator.pushNamed(context, '/home');
+      } else {
+        print("LogIn Fail");
+      }
+    });
+    if (response != null && response.statusCode == 200) {
+      Navigator.pushNamed(context, '/home');
+    }
+  }
 
   @override
   @override
@@ -82,7 +82,6 @@ class _LogInState extends State<LogIn> {
                       MyTextField(
                         item: FieldItem(
                           fieldName: 'Email',
-                          formKey: _formKey,
                           useicon: true,
                           icon: Icons.email_outlined,
                           keyboardType: TextInputType.emailAddress,
@@ -93,7 +92,6 @@ class _LogInState extends State<LogIn> {
                         item: FieldItem(
                           fieldName: 'Password',
                           myController: password,
-                          formKey: _formKey,
                           useSuffixIcon: true,
                           icon: Icons.lock_outlined,
                           useicon: true,
@@ -120,7 +118,7 @@ class _LogInState extends State<LogIn> {
                   padding: EdgeInsets.only(left: 230, top: 20),
                   child: ClicKedText(
                     text: "Forget Password?",
-                    onPressed: '/forget_password',
+                    onPressed: '/email_for_forget_password',
                   ),
                 ),
                 Padding(
@@ -130,8 +128,11 @@ class _LogInState extends State<LogIn> {
                     buttonWidth: 327.w,
                     buttonHeight: 52.h,
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                      /*if (_formKey.currentState!.validate()) {
                         Navigator.pushNamed(context, '/home');
+                      }*/
+                      if (_formKey.currentState!.validate()) {
+                        _login();
                       }
                     },
                     formKey: _formKey,

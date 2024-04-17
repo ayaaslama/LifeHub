@@ -1,5 +1,6 @@
 import 'package:blood_life/core/helper/feild_item.dart';
 import 'package:blood_life/core/networking/crud.dart';
+import 'package:blood_life/core/networking/links_api.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
@@ -18,21 +19,21 @@ class _OtpVerifictionState extends State<OtpVerifiction> {
   final _formKey = GlobalKey<FormState>();
   String userInput = '';
   final TextEditingController code = TextEditingController();
-  // Crud _crud = Crud();
-  // Future<void> _verify() async {
-  //   var response = await _crud.postRequest(
-  //       "https://3a51-156-203-190-131.ngrok-free.app/api/Users/enter_token_verify?token=$userInput",
-  //       ({
-  //         "code": code.text,
-  //       }), (bool success) {
-  //     if (success) {
-  //       print("Authentication successfully");
-  //       Navigator.pushNamed(context, '/home');
-  //     } else {
-  //       print("Authentication Fail");
-  //     }
-  //   });
-  // }
+  Crud _crud = Crud();
+  Future<void> _verify() async {
+    var response = await _crud.postRequest(
+        "$linkServerName/enter_token_verify?token=$userInput",
+        ({
+          "code": code.text,
+        }), (bool success) {
+      if (success) {
+        print("Authentication successfully");
+        Navigator.pushNamed(context, '/home');
+      } else {
+        print("Authentication Fail");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,18 +57,20 @@ class _OtpVerifictionState extends State<OtpVerifiction> {
             SizedBox(
               height: 15.h,
             ),
-            MyTextField(
-                item: FieldItem(
-              fieldName: 'Code',
-              formKey: _formKey,
-              keyboardType: TextInputType.number,
-              myController: code,
-              onChanged: (value) {
-                setState(() {
-                  userInput = value;
-                });
-              },
-            )),
+            Form(
+              key: _formKey,
+              child: MyTextField(
+                  item: FieldItem(
+                fieldName: 'Code',
+                keyboardType: TextInputType.number,
+                myController: code,
+                onChanged: (value) {
+                  setState(() {
+                    userInput = value;
+                  });
+                },
+              )),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 480),
               child: AppTextButton(
@@ -75,7 +78,9 @@ class _OtpVerifictionState extends State<OtpVerifiction> {
                 buttonWidth: 327.w,
                 buttonHeight: 52.h,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/navigationbar');
+                  if (_formKey.currentState!.validate()) {
+                    _verify();
+                  }
                   // if (
                   //   _formKey.currentState!.validate()
                   //   ) {

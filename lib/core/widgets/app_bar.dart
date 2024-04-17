@@ -28,7 +28,7 @@ class CustomeAppBar extends StatelessWidget {
       iconTheme: IconThemeData(color: iconColor),
       elevation: 0,
       backgroundColor: color ?? ManagerColor.mainred,
-      centerTitle: true,
+      //centerTitle: true,
       title: Text(
         text,
         style: textStyle ??

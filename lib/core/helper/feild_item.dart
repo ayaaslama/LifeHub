@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 
 class FieldItem {
   final String fieldName;
-  final GlobalKey<FormState>? formKey;
   final bool useicon;
   final bool useSuffixIcon;
   final IconData? icon;
@@ -11,11 +10,10 @@ class FieldItem {
   final TextInputType? keyboardType;
   final Color? borderSideColor;
   final TextEditingController myController;
-final void Function(String)? onChanged;
+  final void Function(String)? onChanged;
   FieldItem({
     required this.fieldName,
     this.borderSideColor,
-    this.formKey,
     this.useicon = false,
     this.useSuffixIcon = false,
     this.icon,
@@ -23,6 +21,6 @@ final void Function(String)? onChanged;
     this.obscureText = false,
     this.keyboardType,
     required this.myController,
-  this.onChanged,
+    this.onChanged,
   });
 }

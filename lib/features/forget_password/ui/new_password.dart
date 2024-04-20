@@ -79,24 +79,33 @@ class _NewPasswordState extends State<NewPassword> {
                     ),
                     Form(
                       key: _formKey,
-                      child: MyTextField(
-                          item: FieldItem(
-                        fieldName: 'Password',
-                        keyboardType: TextInputType.emailAddress,
-                        myController: pass,
-                      )),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Form(
-                      key: _formKey,
-                      child: MyTextField(
-                          item: FieldItem(
-                        fieldName: 'Confirm Password',
-                        keyboardType: TextInputType.emailAddress,
-                        myController: confirm,
-                      )),
+                      child: Column(
+                        children: [
+                          MyTextField(
+                              item: FieldItem(
+                            fieldName: 'Code',
+                            myController: token,
+                          )),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          MyTextField(
+                              item: FieldItem(
+                            fieldName: 'Password',
+                            keyboardType: TextInputType.emailAddress,
+                            myController: pass,
+                          )),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          MyTextField(
+                              item: FieldItem(
+                            fieldName: 'Confirm Password',
+                            keyboardType: TextInputType.emailAddress,
+                            myController: confirm,
+                          )),
+                        ],
+                      ),
                     ),
                   ],
                 ),

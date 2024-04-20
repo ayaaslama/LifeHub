@@ -93,6 +93,11 @@ class _EmailForForgetPasswordState extends State<EmailForForgetPassword> {
                         fieldName: 'Email Address',
                         keyboardType: TextInputType.emailAddress,
                         myController: email,
+                        onChanged: (value) {
+                          setState(() {
+                            userInput = value;
+                          });
+                        },
                       )),
                     ),
                   ],

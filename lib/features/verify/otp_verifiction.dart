@@ -40,58 +40,60 @@ class _OtpVerifictionState extends State<OtpVerifiction> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, top: 59),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'OTP Verification',
-              style: TextStyles.font24mainRedbold,
-            ),
-            SizedBox(
-              height: 15.h,
-            ),
-            Text(
-              "Add a PIN number to make your account\n more secure and easy to sign in.",
-              style: TextStyles.font16GreyRegular,
-            ),
-            SizedBox(
-              height: 15.h,
-            ),
-            Form(
-              key: _formKey,
-              child: MyTextField(
-                  item: FieldItem(
-                fieldName: 'Code',
-                keyboardType: TextInputType.number,
-                myController: code,
-                onChanged: (value) {
-                  setState(() {
-                    userInput = value;
-                  });
-                },
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 480),
-              child: AppTextButton(
-                textButton: "Submit",
-                buttonWidth: 327.w,
-                buttonHeight: 52.h,
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _verify();
-                  }
-                  // if (
-                  //   _formKey.currentState!.validate()
-                  //   ) {
-                  //   Navigator.pushNamed(context, '/home');
-                  // }
-                },
-                formKey: _formKey,
-                backgroundColor: ManagerColor.mainred,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'OTP Verification',
+                style: TextStyles.font24mainRedbold,
               ),
-            ),
-          ],
+              SizedBox(
+                height: 15.h,
+              ),
+              Text(
+                "Add a PIN number to make your account\n more secure and easy to sign in.",
+                style: TextStyles.font16GreyRegular,
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Form(
+                key: _formKey,
+                child: MyTextField(
+                    item: FieldItem(
+                  fieldName: 'Code',
+                  keyboardType: TextInputType.number,
+                  myController: code,
+                  onChanged: (value) {
+                    setState(() {
+                      userInput = value;
+                    });
+                  },
+                )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 400),
+                child: AppTextButton(
+                  textButton: "Submit",
+                  buttonWidth: 327.w,
+                  buttonHeight: 52.h,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _verify();
+                    }
+                    // if (
+                    //   _formKey.currentState!.validate()
+                    //   ) {
+                    //   Navigator.pushNamed(context, '/home');
+                    // }
+                  },
+                  formKey: _formKey,
+                  backgroundColor: ManagerColor.mainred,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

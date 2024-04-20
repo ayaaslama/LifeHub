@@ -74,7 +74,7 @@ class _EmailForVerifyState extends State<EmailForVerify> {
                 )),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 480),
+                padding: const EdgeInsets.only(top: 400),
                 child: AppTextButton(
                   textButton: "Reset Code",
                   buttonWidth: 327.w,

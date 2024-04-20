@@ -84,6 +84,7 @@ class BloodLife extends StatelessWidget {
           '/email_for_verify': (context) => const EmailForVerify(),
           '/verification_code_for_forget_password': (context) =>
               const VerificationCodeForForgetPassword(),
+          '/forget-password': (context) => const NewPassword(),
         },
 
         debugShowCheckedModeBanner: false,

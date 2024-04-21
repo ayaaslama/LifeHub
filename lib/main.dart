@@ -4,12 +4,12 @@ import 'package:blood_life/features/Additional_Service/additional_service_screen
 import 'package:blood_life/features/additional_service/blood_filtration_service.dart';
 import 'package:blood_life/features/additional_service/blood_test_service.dart';
 import 'package:blood_life/features/additional_service/washed_rbcs_service.dart';
+import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
 import 'package:blood_life/features/donate/ui/book_blood_screen.dart';
 import 'package:blood_life/features/donate/ui/book_plasma_screen.dart';
 import 'package:blood_life/features/donate/ui/donate_blood_screen.dart';
 import 'package:blood_life/features/forget_password/ui/forget_password.dart';
 import 'package:blood_life/features/forget_password/ui/new_password.dart';
-import 'package:blood_life/features/forget_password/ui/verifiction_code.dart';
 import 'package:blood_life/features/home/ui/after_donate_screen.dart';
 import 'package:blood_life/features/home/ui/befor_donate_screen.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
@@ -82,9 +82,8 @@ class BloodLife extends StatelessWidget {
           '/email_for_forget_password': (context) =>
               const EmailForForgetPassword(),
           '/email_for_verify': (context) => const EmailForVerify(),
-          '/verification_code_for_forget_password': (context) =>
-              const VerificationCodeForForgetPassword(),
           '/forget-password': (context) => const NewPassword(),
+          '/ai_generator': (context) => const AiGenerator(),
         },
 
         debugShowCheckedModeBanner: false,

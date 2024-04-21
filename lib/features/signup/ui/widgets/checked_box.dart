@@ -1,3 +1,4 @@
+import 'package:blood_life/core/theaming/color.dart';
 import 'package:flutter/material.dart';
 
 class CheckBox extends StatefulWidget {
@@ -39,8 +40,8 @@ class _CustomColorCheckBoxState extends State<CheckBox> {
                 });
                 widget.onGenderChanged(widget.value, _isChecked);
               },
-              activeColor: widget.activeColor ?? Colors.green,
-              focusColor: Colors.grey,
+              activeColor: widget.activeColor ?? ManagerColor.mainred,
+              focusColor: ManagerColor.maink7ly,
             ),
           ),
         ],

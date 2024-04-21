@@ -44,6 +44,11 @@ class TextStyles {
     fontWeight: FontsWeightHelper.medium,
     color: Colors.white,
   );
+  static TextStyle font12WhihteMedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontsWeightHelper.medium,
+    color: Colors.white,
+  );
   static TextStyle font18K7lybold = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontsWeightHelper.bold,

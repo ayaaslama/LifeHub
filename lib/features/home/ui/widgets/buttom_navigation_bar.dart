@@ -1,6 +1,6 @@
 import 'package:blood_life/core/theaming/color.dart';
-import 'package:blood_life/features/Ai/ai_generator.dart';
-import 'package:blood_life/features/Schedule/schedule.dart';
+import 'package:blood_life/features/Schedule/ui/schedule.dart';
+import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
 import 'package:blood_life/features/profile/profile_screen.dart';
 import 'package:blood_life/features/rewards/rewards.dart';

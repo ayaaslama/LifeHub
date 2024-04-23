@@ -89,4 +89,8 @@ class TextStyles {
     fontWeight: FontsWeightHelper.bold,
     color: ManagerColor.maink7ly,
   );
+  static TextStyle font14k7lybold = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontsWeightHelper.medium,
+      color: ManagerColor.maink7ly);
 }

@@ -1,5 +1,6 @@
 import 'package:blood_life/core/helper/feild_item.dart';
 import 'package:blood_life/core/theaming/color.dart';
+import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
@@ -13,6 +14,12 @@ class MyTextField extends StatelessWidget {
         obscureText: item.obscureText,
         controller: item.myController,
         onChanged: item.onChanged,
+        onSaved: item.onSave,
+        onFieldSubmitted: item.onSubmitted,
+        validator: item.validator,
+        enabled: item.enable,
+        focusNode: item.focusNode,
+        textInputAction: TextInputAction.done,
         decoration: InputDecoration(
           isDense: true,
           contentPadding:
@@ -42,37 +49,36 @@ class MyTextField extends StatelessWidget {
           fillColor: const Color(0XFFFDFDFF),
           filled: true,
         ),
-        style: const TextStyle(
-            fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black),
+        style: TextStyles.font14mainK7lyMedium,
         keyboardType: item.keyboardType,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return '${item.fieldName} is required';
-          }
-          if (item.fieldName == 'Password') {
-            if (value.length < 8) {
-              return 'Password must be at least 8 characters';
-            }
-          }
+        // validator: (value) {
+        //   if (value == null || value.isEmpty) {
+        //     return '${item.fieldName} is required';
+        //   }
+        //   if (item.fieldName == 'Password') {
+        //     if (value.length < 8) {
+        //       return 'Password must be at least 8 characters';
+        //     }
+        //   }
 
-          if (item.fieldName == 'Email') {
-            if (!value.contains('@')) {
-              return 'Invalid email address';
-            }
-          }
+        //   if (item.fieldName == 'Email') {
+        //     if (!value.contains('@')) {
+        //       return 'Invalid email address';
+        //     }
+        //   }
 
-          if (item.fieldName == 'Phone Number') {
-            if (value.length != 11) {
-              return 'Invalid phone number';
-            }
-          }
-          if (item.fieldName == 'National ID') {
-            if (value.length != 14) {
-              return 'Invalid National ID';
-            }
-          }
-          return null;
-        },
+        //   if (item.fieldName == 'Phone Number') {
+        //     if (value.length != 11) {
+        //       return 'Invalid phone number';
+        //     }
+        //   }
+        //   if (item.fieldName == 'National ID') {
+        //     if (value.length != 14) {
+        //       return 'Invalid National ID';
+        //     }
+        //   }
+        //   return null;
+        // },
       ),
     );
   }

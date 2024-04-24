@@ -6,6 +6,7 @@ import 'package:blood_life/features/additional_service/washed_rbcs_service.dart'
 import 'package:blood_life/features/donate/ui/book_blood_screen.dart';
 import 'package:blood_life/features/donate/ui/book_plasma_screen.dart';
 import 'package:blood_life/features/donate/ui/donate_blood_screen.dart';
+import 'package:blood_life/features/forget_password/logic/cubit/forgetpassword_cubit.dart';
 import 'package:blood_life/features/forget_password/ui/forget_password.dart';
 import 'package:blood_life/features/forget_password/ui/new_password.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
@@ -24,6 +25,7 @@ import 'package:blood_life/features/signup/ui/signup_screen.dart';
 import 'package:blood_life/features/verify/email_verifiction.dart';
 import 'package:blood_life/features/verify/otp_verifiction.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -40,8 +42,15 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SignUp());
       case Routes.otpVerifiction:
         return MaterialPageRoute(builder: (_) => const OtpVerifiction());
+
       case Routes.newPassword:
         return MaterialPageRoute(builder: (_) => const NewPassword());
+      case Routes.forgetPassword:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (BuildContext context) => ForgetpasswordCubit(),
+                  child: const EmailForForgetPassword(),
+                ));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case Routes.donateBlood:
@@ -76,9 +85,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const WashedRcbs());
       case Routes.guidlinesScreen:
         return MaterialPageRoute(builder: (_) => const GuidlinesScreen());
-      case Routes.emailForForgetPassword:
-        return MaterialPageRoute(
-            builder: (_) => const EmailForForgetPassword());
+
       case Routes.emailForVerify:
         return MaterialPageRoute(builder: (_) => const EmailForVerify());
 

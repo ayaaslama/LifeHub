@@ -10,6 +10,10 @@ class TextStyles {
       fontSize: 14.sp,
       fontWeight: FontsWeightHelper.semiBold,
       color: ManagerColor.maink7ly);
+  static TextStyle font20mainredsemiBold = TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontsWeightHelper.semiBold,
+      color: ManagerColor.mainred);
   static TextStyle font14mainK7lyMedium = TextStyle(
       fontSize: 14.sp,
       fontWeight: FontsWeightHelper.medium,
@@ -89,4 +93,12 @@ class TextStyles {
     fontWeight: FontsWeightHelper.bold,
     color: ManagerColor.maink7ly,
   );
+  static TextStyle font14k7lybold = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontsWeightHelper.medium,
+      color: ManagerColor.maink7ly);
+  static TextStyle font14k7lymedium = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontsWeightHelper.medium,
+      color: ManagerColor.maink7ly);
 }

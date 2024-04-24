@@ -1,6 +1,9 @@
+import 'package:blood_life/core/helper/estension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
-import 'package:blood_life/core/widgets/app_bar.dart';
+import 'package:blood_life/features/profile/widgets/medicalinfowidget.dart';
+import 'package:blood_life/features/profile/widgets/personalinfowidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,17 +18,48 @@ class ProfileSreen extends StatefulWidget {
 class _ProfileSreenState extends State<ProfileSreen> {
   final upperbodypartheight = 270;
   final double rounded = 30;
+  List<bool> isSelected = [true, false];
+  String indexChange = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ManagerColor.mainred,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 20.w),
+            child: GestureDetector(
+              child: SvgPicture.asset('assets/svgs/setting-2.svg'),
+              onTap: () {
+                context.pushNamed(Routes.settingScreen);
+              },
+            ),
+          )
+        ],
+        title: Text(
+          'Profile',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pop();
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: Colors.white,
+        ),
+      ),
       backgroundColor: ManagerColor.mainred,
       body: Stack(
         children: <Widget>[
           Positioned(
             bottom: 0,
             child: Container(
-              height: MediaQuery.of(context).size.height - 260.h + rounded,
+              height: MediaQuery.of(context).size.height - 200.h + rounded,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -38,21 +72,6 @@ class _ProfileSreenState extends State<ProfileSreen> {
             padding: const EdgeInsets.only(top: 20.0, left: 0),
             child: Column(
               children: [
-                CustomeAppBar(
-                  text: 'Profile',
-                  iconColor: Colors.white,
-                  actions: [
-                    Padding(
-                      padding: EdgeInsets.only(right: 16.w),
-                      child: GestureDetector(
-                        child: SvgPicture.asset('assets/svgs/setting-2.svg'),
-                        onTap: () {
-                          Navigator.pushNamed(context, '/setting');
-                        },
-                      ),
-                    )
-                  ],
-                ),
                 SizedBox(
                   height: 20.h,
                 ),
@@ -78,60 +97,50 @@ class _ProfileSreenState extends State<ProfileSreen> {
                   height: 5.h,
                 ),
                 Text(
-                  'radwanagy19@gmail.com',
+                  'National Id',
                   style: TextStyles.font13GreyRegular,
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
-                // Container(
-                //   width: 327.w,
-                //   height: 59.h,
-                //   decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(16),
-                //       color: ManagerColor.lighterGrey),
-                //   child: Padding(
-                //     padding: const EdgeInsets.only(left: 20, right: 20),
-                //     child: Row(
-                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //       children: [
-                //         ClicKedText(
-                //           text: 'Personal Info',
-                //           fontSize: 16.sp,
-                //           fontWeight: FontWeight.bold,
-                //           onPressed: '',
-                //         ),
-                //         ClicKedText(
-                //           fontSize: 16.sp,
-                //           text: 'Medical Info',
-                //           fontWeight: FontWeight.bold,
-                //           onPressed: '',
-                //         )
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                SizedBox(
-                  height: 30.h,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset(
-                        'assets/svgs/personalcard.svg',
-                        color: ManagerColor.mainred,
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      Text(
-                        "Personal Information",
-                        style: TextStyles.font14mainK7lysemiBold,
-                      ),
-                    ],
-                  ),
+                ToggleButtons(
+                  isSelected: isSelected,
+                  onPressed: (int index) {
+                    setState(() {
+                      for (var i = 0; i < isSelected.length; i++) {
+                        if (i == index) {
+                          isSelected[i] = true;
+                          indexChange = 'personal';
+                        } else {
+                          isSelected[i] = false;
+                          indexChange = 'medical';
+                        }
+                      }
+                    });
+                  },
+                  color: ManagerColor.mainred,
+                  fillColor: ManagerColor.mainred,
+                  borderRadius: BorderRadius.circular(16),
+                  selectedColor: Colors.white,
+                  disabledColor: ManagerColor.mainred,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Text('Personal Info',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Text('    Medical info    ',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 20.h,
@@ -139,62 +148,9 @@ class _ProfileSreenState extends State<ProfileSreen> {
                 Divider(
                   height: 10.h,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 20.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset(
-                        'assets/svgs/calendar.svg',
-                        color: ManagerColor.mainred,
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      Text(
-                        'Medical Information',
-                        style: TextStyles.font14mainK7lysemiBold,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20.h,
-                ),
-                Divider(
-                  height: 10.h,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 13),
-                        child: SvgPicture.asset(
-                          'assets/svgs/guidlines.svg',
-                          color: ManagerColor.mainred,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/guidlines');
-                        },
-                        child: Text(
-                          'Guidlines',
-                          style: TextStyles.font14mainK7lysemiBold,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-
-                Divider(
-                  height: 10.h,
-                ),
+                indexChange == "personal"
+                    ? const MedicalInfoWidget()
+                    : const PersonalInfoWidget()
               ],
             ),
           )

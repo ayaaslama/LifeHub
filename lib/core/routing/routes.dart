@@ -3,7 +3,9 @@ class Routes {
   static const String logIn = '/login';
   static const String signUp = '/signup';
   static const String otpVerifiction = '/otp_verifiction';
+
   static const String newPassword = '/new_password';
+  static const String forgetPassword = '/forget_password';
   static const String beforDonate = '/befor_donate';
   static const String home = '/home';
   static const String afterDonate = '/after_donate';
@@ -24,6 +26,5 @@ class Routes {
   static const String bloodFiltration = '/bloodfiltration';
   static const String washedRcbs = '/washedrbcs';
   static const String guidlinesScreen = '/guidlines';
-  static const String emailForForgetPassword = '/email_for_forget_password';
   static const String emailForVerify = '/email_for_verify';
 }

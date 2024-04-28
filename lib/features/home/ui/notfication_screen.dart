@@ -36,7 +36,7 @@ class NoteficationScreen extends StatelessWidget {
                       Text('Today', style: TextStyles.font14GreyMedium),
                       const ClicKedText(
                         text: 'Mark all as read',
-                        onPressed: '',
+                        routeName: '',
                       )
                     ],
                   ),

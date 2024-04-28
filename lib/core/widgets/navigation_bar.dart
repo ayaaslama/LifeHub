@@ -1,6 +1,5 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/features/Schedule/ui/schedule.dart';
-import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
 import 'package:blood_life/features/profile/profile_screen.dart';
 import 'package:blood_life/features/rewards/rewards.dart';
@@ -19,7 +18,6 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
     const HomePage(),
     const RewardsScreen(),
     const Schedule(),
-    const AiGenerator(),
     const ProfileSreen(),
   ];
 
@@ -29,7 +27,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: ManagerColor.mainred,
         unselectedItemColor: ManagerColor.maink7ly,
-        iconSize: 24,
+        iconSize: 28,
         currentIndex: selectedIndex,
         onTap: (index) {
           setState(() {
@@ -42,10 +40,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
           BottomNavigationBarItem(
               icon: Icon(Icons.card_giftcard_outlined), label: 'Rewards'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.event_note_outlined), label: 'Reports'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.assignment_turned_in_outlined),
-              label: 'Schedule'),
+              icon: Icon(Icons.event_note_outlined), label: 'Schedule'),
           BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined), label: 'Profile'),
         ],

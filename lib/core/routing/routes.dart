@@ -27,4 +27,6 @@ class Routes {
   static const String washedRcbs = '/washedrbcs';
   static const String guidlinesScreen = '/guidlines';
   static const String emailForVerify = '/email_for_verify';
+  static const String aiGenerator = '/aiGenerator';
+  static const String questionare = '/questionare';
 }

@@ -1,23 +1,25 @@
 import 'package:blood_life/core/routing/routes.dart';
+import 'package:blood_life/core/widgets/navigation_bar.dart';
 import 'package:blood_life/features/additional_service/additional_service_screen.dart';
 import 'package:blood_life/features/additional_service/blood_filtration_service.dart';
 import 'package:blood_life/features/additional_service/blood_test_service.dart';
 import 'package:blood_life/features/additional_service/washed_rbcs_service.dart';
+import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
 import 'package:blood_life/features/donate/ui/book_blood_screen.dart';
 import 'package:blood_life/features/donate/ui/book_plasma_screen.dart';
 import 'package:blood_life/features/donate/ui/donate_blood_screen.dart';
-import 'package:blood_life/features/forget_password/logic/cubit/forgetpassword_cubit.dart';
-import 'package:blood_life/features/forget_password/ui/forget_password.dart';
-import 'package:blood_life/features/forget_password/ui/new_password.dart';
+import 'package:blood_life/features/home/ui/after_donate_screen.dart';
+import 'package:blood_life/features/home/ui/befor_donate_screen.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
+import 'package:blood_life/features/home/ui/in_center_screen.dart';
 import 'package:blood_life/features/home/ui/notfication_screen.dart';
-import 'package:blood_life/features/home/ui/widgets/buttom_navigation_bar.dart';
 import 'package:blood_life/features/login/ui/login.dart';
 import 'package:blood_life/features/map/map_screen.dart';
 import 'package:blood_life/features/onboarding/onboarding.dart';
 import 'package:blood_life/features/profile/guidline/guidlines_screen.dart';
 import 'package:blood_life/features/profile/profile_screen.dart';
 import 'package:blood_life/features/profile/setting/setting_screen.dart';
+import 'package:blood_life/features/questionnaires/ui/questionnaires.dart';
 import 'package:blood_life/features/request/ui/book_request_blood_screen.dart';
 import 'package:blood_life/features/request/ui/book_request_plasma_screen.dart';
 import 'package:blood_life/features/request/ui/request_blood_screen.dart';
@@ -25,7 +27,6 @@ import 'package:blood_life/features/signup/ui/signup_screen.dart';
 import 'package:blood_life/features/verify/email_verifiction.dart';
 import 'package:blood_life/features/verify/otp_verifiction.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -36,21 +37,23 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
 
       case Routes.logIn:
-        return MaterialPageRoute(builder: (_) => const LogIn());
+        return MaterialPageRoute(
+          builder: (_) => LogIn(),
+        );
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUp());
       case Routes.otpVerifiction:
         return MaterialPageRoute(builder: (_) => const OtpVerifiction());
 
-      case Routes.newPassword:
-        return MaterialPageRoute(builder: (_) => const NewPassword());
-      case Routes.forgetPassword:
-        return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (BuildContext context) => ForgetpasswordCubit(),
-                  child: const EmailForForgetPassword(),
-                ));
+      // case Routes.newPassword:
+      //   return MaterialPageRoute(builder: (_) => const NewPassword());
+      // case Routes.forgetPassword:
+      //   return MaterialPageRoute(
+      //       builder: (_) => BlocProvider(
+      //             create: (BuildContext context) => ForgetpasswordCubit(),
+      //             child: const EmailForForgetPassword(),
+      //           ));
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case Routes.donateBlood:
@@ -85,9 +88,19 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const WashedRcbs());
       case Routes.guidlinesScreen:
         return MaterialPageRoute(builder: (_) => const GuidlinesScreen());
+      case Routes.beforDonate:
+        return MaterialPageRoute(builder: (_) => const BeforDonate());
+      case Routes.inCenter:
+        return MaterialPageRoute(builder: (_) => const InCenter());
+      case Routes.afterDonate:
+        return MaterialPageRoute(builder: (_) => const AfterDonate());
 
       case Routes.emailForVerify:
         return MaterialPageRoute(builder: (_) => const EmailForVerify());
+      case Routes.aiGenerator:
+        return MaterialPageRoute(builder: (_) => const AiGenerator());
+      case Routes.questionare:
+        return MaterialPageRoute(builder: (_) => const Questionnaires());
 
       default:
         return MaterialPageRoute(

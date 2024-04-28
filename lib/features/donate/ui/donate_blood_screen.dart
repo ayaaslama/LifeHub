@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
@@ -16,15 +18,28 @@ class _DonateBloodState extends State<DonateBlood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ManagerColor.mainred,
+        title: Text(
+          'Select Donation -Type',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pushReplacementNamed(Routes.myNavigationBar);
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: Colors.white,
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomeAppBar(
-            color: ManagerColor.mainred,
-            text: 'Select Donation -Type',
-            iconColor: Colors.white,
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
             child: Column(
@@ -61,6 +76,7 @@ class _DonateBloodState extends State<DonateBlood> {
                   assetName: 'assets/svgs/plasma.svg',
                   width: 10,
                   color: const Color.fromRGBO(255, 183, 66, 1),
+                  color1: const Color.fromRGBO(255, 183, 66, 1),
                 ),
                 const SizedBox(
                   height: 5.0,

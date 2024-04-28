@@ -1,6 +1,7 @@
 import 'package:blood_life/core/helper/feild_item.dart';
 import 'package:blood_life/core/networking/crud.dart';
 import 'package:blood_life/core/networking/links_api.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_clicked_text.dart';
@@ -44,25 +45,19 @@ class _SignUpState extends State<SignUp> {
 
   Future<void> _signup() async {
     var response = await _crud.postRequest(
-        linkSignUp,
-        ({
-          "userName": userName.text,
-          "email": email.text,
-          "nationalID": nationalID.text,
-          "phone": phone.text,
-          "password": password.text,
-          "city": city.text,
-          "bloodBank": bloodBank.text,
-          "birthDate": birthDate.text,
-          "gender": gender.text,
-        }), (bool success) {
-      if (success && _formKey.currentState!.validate()) {
-        print("User registered successfully");
-        Navigator.pushNamed(context, '/email_for_verify');
-      } else {
-        print("SignUp Fail");
-      }
-    });
+      linkSignUp,
+      ({
+        "userName": userName.text,
+        "email": email.text,
+        "nationalID": nationalID.text,
+        "phone": phone.text,
+        "password": password.text,
+        "city": city.text,
+        "bloodBank": bloodBank.text,
+        "birthDate": birthDate.text,
+        "gender": gender.text,
+      }),
+    );
   }
 
   @override
@@ -227,7 +222,7 @@ class _SignUpState extends State<SignUp> {
                 child: TermAndConditionText(),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 30),
+                padding: EdgeInsets.only(top: 30.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -235,7 +230,7 @@ class _SignUpState extends State<SignUp> {
                         style: TextStyles.font14DarkBlackMedium),
                     const ClicKedText(
                       text: "Login Now",
-                      onPressed: '/login',
+                      routeName: Routes.logIn,
                     ),
                   ],
                 ),

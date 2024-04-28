@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/fonts_weight_helper.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
@@ -161,11 +163,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                               ? AppTextButton(
                                                   textButton: 'Get Started',
                                                   onPressed: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (_) =>
-                                                                const SignUp()));
+                                                    context.pushNamed(
+                                                        Routes.logIn);
                                                   },
                                                   buttonHeight: 49.h,
                                                   buttonWidth: 145.w,

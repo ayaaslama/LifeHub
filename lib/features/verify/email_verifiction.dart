@@ -23,17 +23,11 @@ class _EmailForVerifyState extends State<EmailForVerify> {
   Crud _crud = Crud();
   Future<void> _verify() async {
     var response = await _crud.postRequest(
-        "$linkServerName/send_verify_token?email=$userInput",
-        ({
-          "email": email.text,
-        }), (bool success) {
-      if (success) {
-        print("Authentication successfully");
-        Navigator.pushNamed(context, '/otp_verifiction');
-      } else {
-        print("Authentication Fail");
-      }
-    });
+      "$linkServerName/send_verify_token?email=$userInput",
+      ({
+        "email": email.text,
+      }),
+    );
   }
 
   @override

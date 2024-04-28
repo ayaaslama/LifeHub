@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
@@ -16,15 +18,28 @@ class _DonateBloodState extends State<RequestBloodScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ManagerColor.mainred,
+        title: Text(
+          'Select Request -Type',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pop();
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: Colors.white,
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomeAppBar(
-            color: ManagerColor.mainred,
-            text: 'Select Request -Type',
-            iconColor: Colors.white,
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 20),
             child: Column(
@@ -41,10 +56,9 @@ class _DonateBloodState extends State<RequestBloodScreen> {
                   height: 10.h,
                 ),
                 CustomeBloodPlasma(
-                  text3: 'Search Now',
-                  onpressed1: () =>
-                      {Navigator.pushNamed(context, '/blood_search')},
-                ),
+                    text3: 'Search Now',
+                    onpressed1: () =>
+                        context.pushReplacementNamed(Routes.searchBloodScreen)),
                 const SizedBox(
                   height: 5.0,
                 ),
@@ -53,13 +67,14 @@ class _DonateBloodState extends State<RequestBloodScreen> {
                 ),
                 CustomeBloodPlasma(
                   onpressed1: () =>
-                      {Navigator.pushNamed(context, '/plasma_search')},
+                      context.pushReplacementNamed(Routes.searchPlasmaScreen),
                   text1: 'Allow 1.5 hours for your visit ',
                   text2: 'Plasma',
                   text3: 'Search Now',
                   assetName: 'assets/svgs/plasma.svg',
                   width: 10,
                   color: const Color.fromRGBO(255, 183, 66, 1),
+                  color1: const Color.fromRGBO(255, 183, 66, 1),
                 ),
                 const SizedBox(
                   height: 5.0,

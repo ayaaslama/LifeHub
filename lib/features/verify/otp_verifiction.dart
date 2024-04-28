@@ -22,17 +22,11 @@ class _OtpVerifictionState extends State<OtpVerifiction> {
   Crud _crud = Crud();
   Future<void> _verify() async {
     var response = await _crud.postRequest(
-        "$linkServerName/enter_token_verify?token=$userInput",
-        ({
-          "code": code.text,
-        }), (bool success) {
-      if (success) {
-        print("Authentication successfully");
-        Navigator.pushNamed(context, '/home');
-      } else {
-        print("Authentication Fail");
-      }
-    });
+      "$linkServerName/enter_token_verify?token=$userInput",
+      ({
+        "code": code.text,
+      }),
+    );
   }
 
   @override

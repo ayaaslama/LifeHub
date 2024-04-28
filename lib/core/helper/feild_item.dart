@@ -9,7 +9,7 @@ class FieldItem {
   final bool obscureText;
   final TextInputType? keyboardType;
   final Color? borderSideColor;
-  final TextEditingController myController;
+  final TextEditingController? myController;
   final void Function(String)? onChanged;
   final void Function(String?)? onSave;
   final void Function(String?)? onSubmitted;
@@ -35,7 +35,7 @@ class FieldItem {
     this.suffixIcon,
     this.obscureText = false,
     this.keyboardType,
-    required this.myController,
+    this.myController,
     this.onChanged,
   });
 }

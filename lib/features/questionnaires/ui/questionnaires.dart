@@ -1,8 +1,9 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
 import 'package:blood_life/features/questionnaires/ui/listview_builder.dart';
-import 'package:blood_life/features/signup/ui/widgets/checked_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,19 +29,30 @@ class _QuestionnairesState extends State<Questionnaires> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ManagerColor.mainred,
+        title: Text(
+          'Questionnaires',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pushReplacementNamed(Routes.myNavigationBar);
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: Colors.white,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 50.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Questionnaires",
-                style: TextStyles.font20K7lybold,
-              ),
-              SizedBox(
-                height: 7.h,
-              ),
               Text(
                 "Fill up the following questionnaries and become a doner",
                 style: TextStyles.font14mainK7lysemiBold,
@@ -60,7 +72,7 @@ class _QuestionnairesState extends State<Questionnaires> {
                 textButton: 'Become a doner',
                 buttonWidth: 350.w,
                 buttonHeight: 55.h,
-                onPressed: () => Navigator.pushNamed(context, "/donate_blood"),
+                onPressed: () => context.pushNamed(Routes.donateBlood),
               ))
             ],
           ),

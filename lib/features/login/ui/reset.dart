@@ -1,5 +1,6 @@
+import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/helper/feild_item.dart';
-import 'package:blood_life/core/networking/crud.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
 import 'package:blood_life/core/widgets/app_text_feild.dart';
 import 'package:flutter/material.dart';
@@ -142,7 +143,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                 AppTextButton(
                   textButton: "Back to log in",
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    context.pushNamed(Routes.logIn);
                   },
                   backgroundColor: Colors.white,
                   textColor: Colors.red,

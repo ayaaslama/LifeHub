@@ -12,6 +12,11 @@ class DateTextField extends StatefulWidget {
   final Color? primaryColor;
   final TextEditingController dateController;
   final Color? iconColor;
+  final void Function(String?)? onsave;
+  final void Function()? onEditingComplete;
+  final String? Function(String?)? validator;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
 
   const DateTextField(
       {Key? key,
@@ -21,7 +26,12 @@ class DateTextField extends StatefulWidget {
       this.borderSideColor,
       this.primaryColor,
       required this.dateController,
-      this.iconColor})
+      this.iconColor,
+      this.onsave,
+      this.onEditingComplete,
+      this.validator,
+      this.focusNode,
+      this.textInputAction})
       : super(key: key);
 
   @override
@@ -78,6 +88,11 @@ class _DateTextFieldState extends State<DateTextField> {
       item: FieldItem(
         myController: widget.dateController,
         fieldName: widget.labelText,
+        onSave: widget.onsave,
+        onEditingComplete: widget.onEditingComplete,
+        textInputAction: widget.textInputAction,
+        focusNode: widget.focusNode,
+        validator: widget.validator,
         useicon: false,
         useSuffixIcon: true,
         suffixIcon: IconButton(

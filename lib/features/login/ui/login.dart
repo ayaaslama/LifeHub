@@ -7,30 +7,28 @@ import 'package:blood_life/core/vaildator/validator.dart';
 import 'package:blood_life/core/widgets/app_clicked_text.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
 import 'package:blood_life/core/widgets/app_text_feild.dart';
+import 'package:blood_life/core/widgets/loading.dart';
 import 'package:blood_life/core/widgets/snack_bar.dart';
+import 'package:blood_life/core/widgets/termsAnd_condition.dart';
 import 'package:blood_life/features/login/logic/cubit/login_cubit.dart';
-import 'package:blood_life/features/login/ui/widgets/terms_and_condition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class LogIn extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-
+class Login extends StatelessWidget {
+  final formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-
   String? email, password;
-
   bool isLoading = false;
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
-          if (state is LoginLoading) {
-            isLoading = true;
-          } else if (state is LoginSuccess) {
+          if (state is LoginSuccess) {
             context.pushNamed(Routes.home);
             isLoading = false;
           } else if (state is LoginFailure) {
@@ -46,37 +44,39 @@ class LogIn extends StatelessWidget {
             child: SingleChildScrollView(
               physics: const ScrollPhysics(),
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 34),
                       child: Text("Welcome Back",
-                          style: TextStyles.font24mainRedbold),
+                          style: TextStyles.font22mainRedbold),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 10.h,
                     ),
                     Text(
-                      "We're excited to have you back, can't wait to see what you've been up to since you last logged in",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: const Color.fromARGB(255, 136, 136, 136),
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400),
-                    ),
+                        "We're excited to have you back, can't wait to see what you've been up to since you last logged in",
+                        textAlign: TextAlign.start,
+                        style: TextStyles.font14GreyMedium),
                     SizedBox(
-                      height: 15.h,
+                      height: 10.h,
                     ),
                     Form(
                       autovalidateMode: autoValidateMode,
-                      key: _formKey,
+                      key: formKey,
                       child: Column(
                         children: [
                           MyTextField(
                             item: FieldItem(
                               fieldName: 'Email',
+                              focusNode: emailFocusNode,
+                              textInputAction: TextInputAction.next,
+                              onEditingComplete: () {
+                                FocusScope.of(context)
+                                    .requestFocus(emailFocusNode);
+                              },
                               validator: (value) {
                                 return Validator.validateEmail(value);
                               },
@@ -93,6 +93,12 @@ class LogIn extends StatelessWidget {
                               fieldName: 'Password',
                               validator: (value) {
                                 return Validator.validatePassword(value);
+                              },
+                              focusNode: passwordFocusNode,
+                              textInputAction: TextInputAction.done,
+                              onEditingComplete: () {
+                                FocusScope.of(context)
+                                    .requestFocus(passwordFocusNode);
                               },
                               onSave: (data) {
                                 password = data;
@@ -120,7 +126,7 @@ class LogIn extends StatelessWidget {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(left: 230, top: 20),
+                      padding: EdgeInsets.only(left: 240, top: 10),
                       child: ClicKedText(
                         text: "Forget Password?",
                         routeName: Routes.forgetPassword,
@@ -128,19 +134,22 @@ class LogIn extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30),
-                      child: AppTextButton(
-                        textButton: "Login",
-                        buttonWidth: 327.w,
-                        buttonHeight: 52.h,
-                        onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
-                            BlocProvider.of<LoginCubit>(context)
-                                .login(email: email!, password: password!);
-                          } else {}
-                        },
-                        formKey: _formKey,
-                        backgroundColor: ManagerColor.mainred,
-                      ),
+                      child: state is LoginLoading
+                          ? const LoadingButton()
+                          : AppTextButton(
+                              textButton: "Login",
+                              buttonWidth: 327.w,
+                              buttonHeight: 52.h,
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
+                                  formKey.currentState!.save();
+                                  BlocProvider.of<LoginCubit>(context).login(
+                                      email: email!, password: password!);
+                                } else {}
+                              },
+                              formKey: formKey,
+                              backgroundColor: ManagerColor.mainred,
+                            ),
                     ),
                     const Padding(
                       padding: EdgeInsets.only(top: 24.0),

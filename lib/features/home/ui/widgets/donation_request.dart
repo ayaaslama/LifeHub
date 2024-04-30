@@ -59,7 +59,7 @@ class DonationRequest extends StatelessWidget {
                   ),
                   Text(
                     bloodName,
-                    style: TextStyles.font24mainRedbold,
+                    style: TextStyles.font22mainRedbold,
                   )
                 ],
               ),

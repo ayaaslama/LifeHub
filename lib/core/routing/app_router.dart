@@ -8,6 +8,7 @@ import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
 import 'package:blood_life/features/donate/ui/book_blood_screen.dart';
 import 'package:blood_life/features/donate/ui/book_plasma_screen.dart';
 import 'package:blood_life/features/donate/ui/donate_blood_screen.dart';
+import 'package:blood_life/features/forget_password/ui/forget_password.dart';
 import 'package:blood_life/features/home/ui/after_donate_screen.dart';
 import 'package:blood_life/features/home/ui/befor_donate_screen.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
@@ -24,8 +25,8 @@ import 'package:blood_life/features/request/ui/book_request_blood_screen.dart';
 import 'package:blood_life/features/request/ui/book_request_plasma_screen.dart';
 import 'package:blood_life/features/request/ui/request_blood_screen.dart';
 import 'package:blood_life/features/signup/ui/signup_screen.dart';
-import 'package:blood_life/features/verify/email_verifiction.dart';
-import 'package:blood_life/features/verify/otp_verifiction.dart';
+import 'package:blood_life/features/verifiction/ui/code_verify.dart';
+import 'package:blood_life/features/verifiction/ui/email_verify.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -38,22 +39,21 @@ class AppRouter {
 
       case Routes.logIn:
         return MaterialPageRoute(
-          builder: (_) => LogIn(),
+          builder: (_) => Login(),
         );
 
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => const SignUp());
-      case Routes.otpVerifiction:
-        return MaterialPageRoute(builder: (_) => const OtpVerifiction());
+      case Routes.code:
+        return MaterialPageRoute(builder: (_) => CodeForVerfiy());
+      case Routes.emailVerify:
+        return MaterialPageRoute(builder: (_) => EmailForVerfiy());
+      case Routes.forgetPassword:
+        return MaterialPageRoute(builder: (_) => EmailForForgetPassword());
 
       // case Routes.newPassword:
       //   return MaterialPageRoute(builder: (_) => const NewPassword());
-      // case Routes.forgetPassword:
-      //   return MaterialPageRoute(
-      //       builder: (_) => BlocProvider(
-      //             create: (BuildContext context) => ForgetpasswordCubit(),
-      //             child: const EmailForForgetPassword(),
-      //           ));
+
       case Routes.home:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case Routes.donateBlood:
@@ -95,8 +95,8 @@ class AppRouter {
       case Routes.afterDonate:
         return MaterialPageRoute(builder: (_) => const AfterDonate());
 
-      case Routes.emailForVerify:
-        return MaterialPageRoute(builder: (_) => const EmailForVerify());
+      // case Routes.emailForVerify:
+      //   return MaterialPageRoute(builder: (_) => const EmailForVerify());
       case Routes.aiGenerator:
         return MaterialPageRoute(builder: (_) => const AiGenerator());
       case Routes.questionare:

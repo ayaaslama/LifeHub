@@ -8,13 +8,13 @@ import 'package:blood_life/core/widgets/app_text_button.dart';
 import 'package:blood_life/core/widgets/app_text_feild.dart';
 import 'package:blood_life/core/widgets/loading.dart';
 import 'package:blood_life/core/widgets/snack_bar.dart';
-import 'package:blood_life/features/forget_password/logic/cubit/forgetpassword_cubit.dart';
+import 'package:blood_life/features/verifiction/logic/cubit/cubit/email_verify_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class EmailForForgetPassword extends StatelessWidget {
+class EmailForVerfiy extends StatelessWidget {
   String? email;
   final formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
@@ -26,22 +26,15 @@ class EmailForForgetPassword extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            context.pushReplacementNamed(Routes.logIn);
-          },
-          icon: const Icon(Icons.arrow_back_ios_sharp),
-          color: ManagerColor.maink7ly,
-        ),
       ),
-      body: BlocConsumer<ForgetpasswordCubit, ForgetpasswordState>(
+      body: BlocConsumer<EmailVerifyCubit, EmailVerifyState>(
         listener: (context, state) {
-          if ((state is ForgetPasswordLoading)) {
+          if (state is EmailVerifyLoading) {
             isLoading = true;
-          } else if (state is ForgetPasswordSuccess) {
+          } else if (state is EmailVerifySuccess) {
             isLoading = false;
-            context.pushNamed(Routes.home);
-          } else if (state is ForgetPasswordFailure) {
+            context.pushNamed(Routes.code);
+          } else if (state is EmailVerifyFailure) {
             isLoading = false;
             showSnackBar("Something Went Wrong", ManagerColor.mainred);
           }
@@ -49,52 +42,53 @@ class EmailForForgetPassword extends StatelessWidget {
         builder: (context, state) {
           return SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
               child: Form(
                 key: formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 120),
-                      child: SvgPicture.asset(
-                        "assets/svgs/forget_password.svg",
-                        height: 150.h,
-                        width: 150.w,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
                     Center(
-                      child: Text(
-                        'Forget Password?',
-                        style: TextStyles.font22K7lybold,
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/svgs/verify.svg",
+                            height: 150.h,
+                            width: 150.w,
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Text(
+                            'We need to verifiy your details',
+                            style: TextStyles.font22K7lybold,
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Text(
+                            "Enter your email below to receive your code for a complete register.",
+                            style: TextStyles.font14GreyMedium,
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          MyTextField(
+                              item: FieldItem(
+                            fieldName: 'Email ',
+                            focusNode: emailFocuNode,
+                            textInputAction: TextInputAction.done,
+                            keyboardType: TextInputType.emailAddress,
+                            onSave: (data) {
+                              email = data;
+                            },
+                            validator: (value) {
+                              return Validator.validateEmail(value);
+                            },
+                          )),
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "Please Write your email to receive a confirmation code to set a new password.",
-                      style: TextStyles.font14GreyMedium,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    MyTextField(
-                        item: FieldItem(
-                      fieldName: 'Email Address',
-                      focusNode: emailFocuNode,
-                      textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.emailAddress,
-                      onSave: (data) {
-                        email = data;
-                      },
-                      validator: (value) {
-                        return Validator.validateEmail(value);
-                      },
-                    )),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -108,8 +102,8 @@ class EmailForForgetPassword extends StatelessWidget {
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
-                                BlocProvider.of<ForgetpasswordCubit>(context)
-                                    .forgetPassword(email: email!);
+                                BlocProvider.of<EmailVerifyCubit>(context)
+                                    .verify(email: email!);
                               } else {
                                 autoValidateMode = AutovalidateMode.always;
                               }

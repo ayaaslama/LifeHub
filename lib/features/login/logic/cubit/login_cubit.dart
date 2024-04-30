@@ -13,13 +13,20 @@ class LoginCubit extends Cubit<LoginState> {
 
     try {
       var response = await crud.postRequest(
-        linkLogIn,
-        ({
-          "email": email,
-          "password": password,
-        }),
-      );
-      emit(LoginSuccess());
+          linkLogIn,
+          ({
+            "email": email,
+            "password": password,
+          }), (bool success) {
+        if (success) {
+          emit(LoginSuccess());
+        } else {
+          emit(LoginFailure());
+        }
+      });
+      if (response != null && response.statusCode == 200) {
+        emit(LoginSuccess());
+      }
     } on Exception catch (e) {
       emit(LoginFailure());
     }

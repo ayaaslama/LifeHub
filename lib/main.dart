@@ -1,8 +1,12 @@
 import 'package:blood_life/core/helper/constants.dart';
 import 'package:blood_life/core/routing/app_router.dart';
-import 'package:blood_life/core/theaming/color.dart';
+import 'package:blood_life/features/forget_password/logic/cubit/forgetpassword_cubit.dart';
+import 'package:blood_life/features/forget_password/logic/cubit/new_password_cubit.dart';
 import 'package:blood_life/features/login/logic/cubit/login_cubit.dart';
+import 'package:blood_life/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:blood_life/features/splash/splash_screen.dart';
+import 'package:blood_life/features/verifiction/logic/cubit/cubit/code_verify_cubit.dart';
+import 'package:blood_life/features/verifiction/logic/cubit/cubit/email_verify_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,12 +30,27 @@ class BloodLife extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => LoginCubit(),
-          )
+          ),
+          BlocProvider(
+            create: (context) => ForgetpasswordCubit(),
+          ),
+          BlocProvider(
+            create: (context) => EmailVerifyCubit(),
+          ),
+          BlocProvider(
+            create: (context) => CodeVerifyCubit(),
+          ),
+          BlocProvider(
+            create: (context) => NewPasswordCubit(),
+          ),
+          BlocProvider(
+            create: (context) => SignupCubit(),
+          ),
         ],
         child: MaterialApp(
           title: 'LifeBlood App',
           theme: ThemeData(
-            primaryColor: ManagerColor.mainred,
+            primaryColor: Colors.grey,
             scaffoldBackgroundColor: Colors.white,
           ),
           home: const SplashScreen(),

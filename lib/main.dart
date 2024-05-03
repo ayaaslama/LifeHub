@@ -56,7 +56,7 @@ class BloodLife extends StatelessWidget {
           home: const SplashScreen(),
 
           debugShowCheckedModeBanner: false,
-          navigatorKey: navigatorKey,
+          scaffoldMessengerKey: scaffoldKey,
           onGenerateRoute: appRouter.generateRoute,
 
           //initialRoute: Routes.onBoardingScreen,

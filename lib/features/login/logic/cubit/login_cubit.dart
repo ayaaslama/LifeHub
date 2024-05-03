@@ -9,7 +9,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
   Crud crud = Crud();
   Future<void> login({required String email, required String password}) async {
-    emit(LoginLoading());
+    emit(LoginSuccess());
 
     try {
       var response = await crud.postRequest(

@@ -11,20 +11,16 @@ class CodeVerifyCubit extends Cubit<CodeVerifyState> {
   Future<void> verify({required String code}) async {
     emit(CodeVerifyLoading());
 
-    try {
-      var response = await crud.postRequest(
-          "$linkServerName/enter_token_verify?token=$code",
-          ({
-            "code": code,
-          }), (bool success) {
-        if (success) {
-          emit(CodeVerifySuccess());
-        } else {
-          emit(CodeVerifyFailure());
-        }
-      });
-    } on Exception catch (e) {
-      emit(CodeVerifyFailure());
-    }
+    var response = await crud.postRequest(
+        "$linkServerName/enter_token_verify?token=$code",
+        ({
+          "code": code,
+        }), (bool success) {
+      if (success) {
+        emit(CodeVerifySuccess());
+      } else {
+        emit(CodeVerifyFailure());
+      }
+    });
   }
 }

@@ -9,26 +9,19 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
   Crud crud = Crud();
   Future<void> login({required String email, required String password}) async {
-    emit(LoginSuccess());
+    emit(LoginLoading());
 
-    try {
-      var response = await crud.postRequest(
-          linkLogIn,
-          ({
-            "email": email,
-            "password": password,
-          }), (bool success) {
-        if (success) {
-          emit(LoginSuccess());
-        } else {
-          emit(LoginFailure());
-        }
-      });
-      if (response != null && response.statusCode == 200) {
+    var response = await crud.postRequest(
+        linkLogIn,
+        ({
+          "email": email,
+          "password": password,
+        }), (bool success) {
+      if (success) {
         emit(LoginSuccess());
+      } else {
+        emit(LoginFailure());
       }
-    } on Exception catch (e) {
-      emit(LoginFailure());
-    }
+    });
   }
 }

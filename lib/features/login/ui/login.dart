@@ -14,7 +14,6 @@ import 'package:blood_life/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class Login extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -28,149 +27,148 @@ class Login extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
-          if (state is LoginSuccess) {
-            context.pushNamed(Routes.home);
+          if (state is LoginLoading) {
+            isLoading = true;
+          } else if (state is LoginSuccess) {
             isLoading = false;
+            context.pushNamed(Routes.home);
           } else if (state is LoginFailure) {
             showSnackBar("Something Went Wrong", ManagerColor.mainred);
             isLoading = false;
           }
         },
-        builder: (context, state) => ModalProgressHUD(
-          inAsyncCall: isLoading,
-          child: Container(
-            color: Colors.white,
-            height: double.infinity,
-            child: SingleChildScrollView(
-              physics: const ScrollPhysics(),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 34),
-                      child: Text("Welcome Back",
-                          style: TextStyles.font22mainRedbold),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                        "We're excited to have you back, can't wait to see what you've been up to since you last logged in",
-                        textAlign: TextAlign.start,
-                        style: TextStyles.font14GreyMedium),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Form(
-                      autovalidateMode: autoValidateMode,
-                      key: formKey,
-                      child: Column(
-                        children: [
-                          MyTextField(
-                            item: FieldItem(
-                              fieldName: 'Email',
-                              focusNode: emailFocusNode,
-                              textInputAction: TextInputAction.next,
-                              onEditingComplete: () {
-                                FocusScope.of(context)
-                                    .requestFocus(emailFocusNode);
-                              },
-                              validator: (value) {
-                                return Validator.validateEmail(value);
-                              },
-                              onSave: (data) {
-                                email = data;
-                              },
-                              useicon: true,
-                              icon: Icons.email_outlined,
-                              keyboardType: TextInputType.emailAddress,
-                            ),
+        builder: (context, state) => Container(
+          color: Colors.white,
+          height: double.infinity,
+          child: SingleChildScrollView(
+            physics: const ScrollPhysics(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 34),
+                    child: Text("Welcome Back",
+                        style: TextStyles.font22mainRedbold),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Text(
+                      "We're excited to have you back, can't wait to see what you've been up to since you last logged in",
+                      textAlign: TextAlign.start,
+                      style: TextStyles.font14GreyMedium),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Form(
+                    autovalidateMode: autoValidateMode,
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        MyTextField(
+                          item: FieldItem(
+                            fieldName: 'Email',
+                            focusNode: emailFocusNode,
+                            textInputAction: TextInputAction.next,
+                            onEditingComplete: () {
+                              FocusScope.of(context)
+                                  .requestFocus(emailFocusNode);
+                            },
+                            validator: (value) {
+                              return Validator.validateEmail(value);
+                            },
+                            onSave: (data) {
+                              email = data;
+                            },
+                            useicon: true,
+                            icon: Icons.email_outlined,
+                            keyboardType: TextInputType.emailAddress,
                           ),
-                          MyTextField(
-                            item: FieldItem(
-                              fieldName: 'Password',
-                              validator: (value) {
-                                return Validator.validatePassword(value);
-                              },
-                              focusNode: passwordFocusNode,
-                              textInputAction: TextInputAction.done,
-                              onEditingComplete: () {
-                                FocusScope.of(context)
-                                    .requestFocus(passwordFocusNode);
-                              },
-                              onSave: (data) {
-                                password = data;
-                              },
-                              useSuffixIcon: true,
-                              icon: Icons.lock_outlined,
-                              useicon: true,
-                              //obscureText: _obscureText,
-                              keyboardType: TextInputType.visiblePassword,
-                              // suffixIcon: IconButton(
-                              //   icon: Icon(
-                              //     _obscureText
-                              //         ? Icons.visibility
-                              //         : Icons.visibility_off,
-                              //   ),
-                              //   onPressed: () {
-                              //     setState(() {
-                              //       _obscureText = !_obscureText;
-                              //     });
-                              //   },
-                              // ),
-                            ),
+                        ),
+                        MyTextField(
+                          item: FieldItem(
+                            fieldName: 'Password',
+                            validator: (value) {
+                              return Validator.validatePassword(value);
+                            },
+                            focusNode: passwordFocusNode,
+                            textInputAction: TextInputAction.done,
+                            onEditingComplete: () {
+                              FocusScope.of(context)
+                                  .requestFocus(passwordFocusNode);
+                            },
+                            onSave: (data) {
+                              password = data;
+                            },
+                            useSuffixIcon: true,
+                            icon: Icons.lock_outlined,
+                            useicon: true,
+                            //obscureText: _obscureText,
+                            keyboardType: TextInputType.visiblePassword,
+                            // suffixIcon: IconButton(
+                            //   icon: Icon(
+                            //     _obscureText
+                            //         ? Icons.visibility
+                            //         : Icons.visibility_off,
+                            //   ),
+                            //   onPressed: () {
+                            //     setState(() {
+                            //       _obscureText = !_obscureText;
+                            //     });
+                            //   },
+                            // ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 240, top: 10),
-                      child: ClicKedText(
-                        text: "Forget Password?",
-                        routeName: Routes.forgetPassword,
-                      ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 240, top: 10),
+                    child: ClicKedText(
+                      text: "Forget Password?",
+                      routeName: Routes.forgetPassword,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30),
-                      child: state is LoginLoading
-                          ? const LoadingButton()
-                          : AppTextButton(
-                              textButton: "Login",
-                              buttonWidth: 327.w,
-                              buttonHeight: 52.h,
-                              onPressed: () async {
-                                if (formKey.currentState!.validate()) {
-                                  formKey.currentState!.save();
-                                  BlocProvider.of<LoginCubit>(context).login(
-                                      email: email!, password: password!);
-                                } else {}
-                              },
-                              formKey: formKey,
-                              backgroundColor: ManagerColor.mainred,
-                            ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 24.0),
-                      child: TermAndConditionText(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Don’t have an account?  ",
-                              style: TextStyles.font14DarkBlackMedium),
-                          const ClicKedText(
-                            text: "Register Now",
-                            routeName: Routes.signUp,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: isLoading
+                        ? const LoadingButton()
+                        : AppTextButton(
+                            textButton: "Login",
+                            buttonWidth: 327.w,
+                            buttonHeight: 52.h,
+                            onPressed: () async {
+                              if (formKey.currentState!.validate()) {
+                                formKey.currentState!.save();
+                                BlocProvider.of<LoginCubit>(context)
+                                    .login(email: email!, password: password!);
+                              }
+                            },
+                            formKey: formKey,
+                            backgroundColor: ManagerColor.mainred,
                           ),
-                        ],
-                      ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 24.0),
+                    child: TermAndConditionText(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Don’t have an account?  ",
+                            style: TextStyles.font14DarkBlackMedium),
+                        const ClicKedText(
+                          text: "Register Now",
+                          routeName: Routes.signUp,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

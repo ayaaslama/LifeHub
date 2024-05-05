@@ -39,7 +39,7 @@ class NewPassword extends StatelessWidget {
       ),
       body: BlocConsumer<NewPasswordCubit, NewPasswordState>(
         listener: (context, state) {
-          if (state is NewPasswordSuccess) {
+          if (state is NewPasswordLoading) {
             isLoading = true;
           } else if (state is NewPasswordSuccess) {
             isLoading = false;

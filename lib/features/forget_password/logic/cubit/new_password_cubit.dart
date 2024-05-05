@@ -15,22 +15,19 @@ class NewPasswordCubit extends Cubit<NewPasswordState> {
       required String password,
       required String confirmPassword}) async {
     emit(NewPasswordLoading());
-    try {
-      var response = await crud.postRequest(
-          "$linkServerName/reset-password",
-          ({
-            "token": token,
-            "password": password,
-            "confirmPassword": confirmPassword,
-          }), (bool success) {
-        if (success) {
-          emit(NewPasswordSuccess());
-        } else {
-          emit(NewPasswordFailure());
-        }
-      });
-    } on Exception catch (e) {
-      emit(NewPasswordFailure());
-    }
+
+    var response = await crud.postRequest(
+        "$linkServerName/reset-password",
+        ({
+          "token": token,
+          "password": password,
+          "confirmPassword": confirmPassword,
+        }), (bool success) {
+      if (success) {
+        emit(NewPasswordSuccess());
+      } else {
+        emit(NewPasswordFailure());
+      }
+    });
   }
 }

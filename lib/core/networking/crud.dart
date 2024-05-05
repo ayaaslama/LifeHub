@@ -27,6 +27,7 @@ class Crud {
         print('Done successfully');
         onComplete(true);
       } else if (response.statusCode == 400) {
+        onComplete(false);
         print("Error 400: Bad request. Please check your input data.");
         // Add your handling logic for Error 400 here
       } else {

@@ -20,28 +20,25 @@ class SignupCubit extends Cubit<SignupState> {
       required String birthDate,
       required String gender}) async {
     emit(SignupLoading());
-    try {
-      var response = await crud.postRequest(
-          linkSignUp,
-          ({
-            "userName": userName,
-            "email": email,
-            "nationalID": nationalID,
-            "phone": phone,
-            "password": password,
-            "city": city,
-            "bloodBank": bloodBank,
-            "birthDate": birthDate,
-            "gender": gender,
-          }), (bool success) {
-        if (success) {
-          emit(SignupSuccess());
-        } else {
-          emit(SignupFailure());
-        }
-      });
-    } on Exception catch (e) {
-      emit(SignupFailure());
-    }
+
+    var response = await crud.postRequest(
+        linkSignUp,
+        ({
+          "userName": userName,
+          "email": email,
+          "nationalID": nationalID,
+          "phone": phone,
+          "password": password,
+          "city": city,
+          "bloodBank": bloodBank,
+          "birthDate": birthDate,
+          "gender": gender,
+        }), (bool success) {
+      if (success) {
+        emit(SignupSuccess());
+      } else {
+        emit(SignupFailure());
+      }
+    });
   }
 }

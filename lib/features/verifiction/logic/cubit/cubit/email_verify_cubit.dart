@@ -11,20 +11,16 @@ class EmailVerifyCubit extends Cubit<EmailVerifyState> {
   Future<void> verify({required String email}) async {
     emit(EmailVerifyLoading());
 
-    try {
-      var response = await crud.postRequest(
-          "$linkServerName/send_verify_token?email=$email",
-          ({
-            "email": email,
-          }), (bool success) {
-        if (success) {
-          emit(EmailVerifySuccess());
-        } else {
-          emit(EmailVerifyFailure());
-        }
-      });
-    } on Exception catch (e) {
-      emit(EmailVerifyFailure());
-    }
+    var response = await crud.postRequest(
+        "$linkServerName/send_verify_token?email=$email",
+        ({
+          "email": email,
+        }), (bool success) {
+      if (success) {
+        emit(EmailVerifySuccess());
+      } else {
+        emit(EmailVerifyFailure());
+      }
+    });
   }
 }

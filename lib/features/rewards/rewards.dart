@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
@@ -11,14 +13,26 @@ class RewardsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ManagerColor.mainred,
+        title: Text(
+          'Points',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pushNamed(Routes.myNavigationBar);
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: Colors.white,
+        ),
+      ),
       body: Column(
         children: [
-          CustomeAppBar(
-            text: 'Points',
-            titleColor: Colors.white,
-            iconColor: Colors.white,
-            color: ManagerColor.mainred,
-          ),
           Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Text(

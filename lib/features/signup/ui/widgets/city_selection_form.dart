@@ -6,10 +6,20 @@ class CitySelectionForm extends StatefulWidget {
   final Function(String?) onCitySelected;
   final String? initialCity;
   final TextEditingController cityController;
+  final void Function(String?)? onsave;
+  final void Function()? onEditingComplete;
+  final String? Function(String?)? validator;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
   CitySelectionForm(
       {required this.onCitySelected,
       this.initialCity,
-      required this.cityController});
+      required this.cityController,
+      this.onsave,
+      this.onEditingComplete,
+      this.focusNode,
+      this.validator,
+      this.textInputAction});
 
   @override
   _CitySelectionFormState createState() => _CitySelectionFormState();
@@ -51,7 +61,12 @@ class _CitySelectionFormState extends State<CitySelectionForm> {
             widget.onCitySelected(newValue);
           },
         ),
+        onSave: widget.onsave,
+        textInputAction: widget.textInputAction,
+        onEditingComplete: widget.onEditingComplete,
         myController: widget.cityController,
+        focusNode: widget.focusNode,
+        validator: widget.validator,
         onChanged: (value) {
           setState(() {
             selectedCity = value;

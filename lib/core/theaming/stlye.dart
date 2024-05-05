@@ -83,8 +83,8 @@ class TextStyles {
     fontWeight: FontsWeightHelper.bold,
     color: ManagerColor.maink7ly,
   );
-  static TextStyle font24mainRedbold = TextStyle(
-    fontSize: 24.sp,
+  static TextStyle font22mainRedbold = TextStyle(
+    fontSize: 22.sp,
     fontWeight: FontsWeightHelper.bold,
     color: ManagerColor.mainred,
   );
@@ -101,4 +101,8 @@ class TextStyles {
       fontSize: 14.sp,
       fontWeight: FontsWeightHelper.medium,
       color: ManagerColor.maink7ly);
+  static TextStyle font16Greybold = TextStyle(
+      color: const Color.fromARGB(255, 136, 136, 136),
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w400);
 }

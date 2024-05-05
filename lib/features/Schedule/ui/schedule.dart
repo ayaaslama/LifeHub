@@ -1,6 +1,7 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
-import 'package:blood_life/core/widgets/app_bar.dart';
 import 'package:blood_life/features/Schedule/ui/widgets/listview_builder_for_finished.dart';
 import 'package:blood_life/features/Schedule/ui/widgets/listview_builder_for_waiting.dart';
 import 'package:flutter/material.dart';
@@ -12,16 +13,28 @@ class Schedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ManagerColor.mainred,
+        title: Text(
+          'Blood Donation Schedule',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pushNamed(Routes.myNavigationBar);
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: Colors.white,
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomeAppBar(
-            text: 'Blood Donation Schedule',
-            color: ManagerColor.mainred,
-            iconColor: Colors.white,
-            titleColor: Colors.white,
-          ),
           SizedBox(
             height: 20.h,
           ),

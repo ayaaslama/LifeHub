@@ -1,4 +1,6 @@
+import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/helper/feild_item.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
@@ -24,31 +26,41 @@ class _BloodRegisterScreenState extends State<BookPlasmaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ManagerColor.plasmaColor,
+        centerTitle: true,
+        title: Text(
+          'Donate Register-Cont',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pushReplacementNamed(Routes.donateBlood);
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: Colors.white,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CustomeAppBar(
-              text: "Donate Register-Cont",
-              color: ManagerColor.plasmaColor,
-              iconColor: Colors.white,
-            ),
             Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 14, vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Center(
+                      Center(
                         child: Text(
-                          'Plasma Register-Cont',
+                          ' Plasma Register-Cont',
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.w600,
                               color: ManagerColor.maink7ly),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
                       ),
                       Form(
                         key: _formKey,

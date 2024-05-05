@@ -1,8 +1,11 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_clicked_text.dart';
 import 'package:blood_life/features/home/ui/widgets/donation_request.dart';
 import 'package:blood_life/features/home/ui/widgets/lisview_builder_of_what_you_need.dart';
+import 'package:blood_life/features/profile/donating_what_to_except.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -49,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/notefication');
+                          context.pushNamed(Routes.noteficationScreen);
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(left: 150),
@@ -90,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      Navigator.pushNamed(context, '/map');
+                                      context.pushNamed(Routes.mapScreen);
                                     },
                                     child: Container(
                                         width: 120.w,
@@ -129,52 +132,104 @@ class _HomePageState extends State<HomePage> {
                 const WhatYouNeeded(),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text("emergency", style: TextStyles.font16K7lybold),
+                  child: Center(
+                    child: Text("Donating -What to expect",
+                        style: TextStyles.font16K7lybold),
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Container(
-                    height: 70.h,
-                    width: 363.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.white,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color.fromRGBO(217, 217, 217, 1),
-                          spreadRadius: 0,
-                          blurRadius: 4,
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 93.w,
+                        height: 123.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: ManagerColor.lightRed,
                         ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'A+',
-                            style: TextStyles.font24mainRedbold,
+                        child: GestureDetector(
+                          onTap: () {
+                            context.pushNamed(Routes.beforDonate);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0),
+                                child: Image.asset(
+                                  "assets/images/Rectangle 6654.png",
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 2.0),
+                                child: Text("Befor",
+                                    style: TextStyles.font14mainK7lysemiBold),
+                              ),
+                            ],
                           ),
-                          Text(
-                            'B+',
-                            style: TextStyles.font24mainRedbold,
-                          ),
-                          Text(
-                            'AB-',
-                            style: TextStyles.font24mainRedbold,
-                          ),
-                          Text(
-                            'A-',
-                            style: TextStyles.font24mainRedbold,
-                          ),
-                          Text(
-                            'O+',
-                            style: TextStyles.font24mainRedbold,
-                          )
-                        ],
+                        ),
                       ),
-                    ),
+                      Container(
+                        width: 93.w,
+                        height: 123.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: ManagerColor.lightBlue,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            context.pushNamed(Routes.inCenter);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0),
+                                child: Image.asset(
+                                  "assets/images/Rectangle 6656.png",
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 2.0),
+                                child: Text("In_Center",
+                                    style: TextStyles.font14mainK7lysemiBold),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 93.w,
+                        height: 123.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: ManagerColor.lightRed,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            context.pushNamed(Routes.afterDonate);
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0),
+                                child: Image.asset(
+                                  "assets/images/Rectangle 6658.png",
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 2.0),
+                                child: Text("After",
+                                    style: TextStyles.font14mainK7lysemiBold),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
@@ -182,21 +237,20 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Donation Request",
-                            style: TextStyles.font16K7lybold),
-                        const ClicKedText(text: 'See All', onPressed: '')
+                        Text("Help Us", style: TextStyles.font16K7lybold),
+                        // const ClicKedText(text: 'See All', routeName: '')
                       ]),
                 ),
                 const DonationRequest(
-                  nameHospital: 'Tanta Hospital',
-                  time: "Time:03.00PM,21.january.2024",
+                  nameHospital: 'Medical center in Tanta',
+                  location: "Tanta Qism 2, First Tanta",
                   bloodName: 'O+',
                 ),
                 const DonationRequest(
-                  nameHospital: 'Tanta Hospital',
-                  time: "Time:06.00PM,28.january.2024",
+                  nameHospital: 'Al-Minshawi General Hospital',
+                  location: "Tanta Qism 2 ",
                   bloodName: 'A-',
-                )
+                ),
               ],
             ),
           ),

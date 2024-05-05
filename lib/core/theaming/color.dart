@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class ManagerColor {
   static const mainred = Color(0XFFBA1816);
+  static const white = Colors.white;
   static const maink7ly = Color(0XFF1E2D50);
+  static const lightBlue = Color.fromARGB(255, 170, 229, 255);
   static const lightRed = Color.fromARGB(255, 253, 217, 217);
   static const lighterRed = Color.fromARGB(250, 245, 153, 153);
 

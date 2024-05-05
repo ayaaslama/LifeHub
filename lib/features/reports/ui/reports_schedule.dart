@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
@@ -13,7 +15,9 @@ class ReportsSchedule extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(Routes.myNavigationBar);
+          },
           icon: const Icon(Icons.arrow_back_ios_sharp),
           color: Colors.white,
         ),

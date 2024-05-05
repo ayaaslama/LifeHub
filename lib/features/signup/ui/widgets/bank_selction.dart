@@ -9,7 +9,11 @@ class BankSelectionForm extends StatefulWidget {
   BankSelectionForm(
       {required this.onBankSelected,
       this.initialBank,
-      required this.bankController});
+      required this.bankController,
+      required TextInputAction textInputAction,
+      required FocusNode focusNode,
+      required Null Function() onEditingComplete,
+      required String? Function(dynamic value) validator});
 
   @override
   _BankSelectionFormState createState() => _BankSelectionFormState();
@@ -46,7 +50,7 @@ class _BankSelectionFormState extends State<BankSelectionForm> {
         keyboardType: TextInputType.text,
         useSuffixIcon: true,
         suffixIcon: PopupMenuButton<String>(
-          icon: Icon(Icons.arrow_drop_down),
+          icon: const Icon(Icons.arrow_drop_down),
           itemBuilder: (BuildContext context) {
             return banks.map((String city) {
               return PopupMenuItem<String>(

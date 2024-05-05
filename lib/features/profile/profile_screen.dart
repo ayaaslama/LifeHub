@@ -1,4 +1,4 @@
-import 'package:blood_life/core/helper/estension.dart';
+import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
@@ -47,7 +47,7 @@ class _ProfileSreenState extends State<ProfileSreen> {
         ),
         leading: IconButton(
           onPressed: () {
-            context.pop();
+            context.pushNamed(Routes.myNavigationBar);
           },
           icon: const Icon(Icons.arrow_back_ios_sharp),
           color: Colors.white,
@@ -59,7 +59,7 @@ class _ProfileSreenState extends State<ProfileSreen> {
           Positioned(
             bottom: 0,
             child: Container(
-              height: MediaQuery.of(context).size.height - 200.h + rounded,
+              height: MediaQuery.of(context).size.height - 260.h + rounded,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   color: Colors.white,

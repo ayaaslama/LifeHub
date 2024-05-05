@@ -1,6 +1,9 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WhatYouNeeded extends StatefulWidget {
@@ -14,19 +17,24 @@ class _WhatYouNeededState extends State<WhatYouNeeded> {
   List features = [
     {
       'image': "assets/images/Vector (2).png",
-      'ontap': '/blood_donate',
+      'ontap': Routes.questionare,
       'text': "Donate blood",
     },
     {
       'image': "assets/images/mdi_blood-plus.png",
-      'ontap': '/blood_requset',
+      'ontap': Routes.bloodRequset,
       'text': "Request blood",
     },
     {
       'image': "assets/images/service.png",
-      'ontap': '/service',
+      'ontap': Routes.additionalService,
       'text': "Service",
-    }
+    },
+    {
+      'image': "assets/images/robot.png",
+      'ontap': Routes.aiGenerator,
+      'text': "Ai Generator",
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -53,13 +61,16 @@ class _WhatYouNeededState extends State<WhatYouNeeded> {
                 ),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, "${features[i]["ontap"]}");
+                    context.pushNamed("${features[i]['ontap']}");
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "${features[i]['image']}", // Replace with your image file path
+                        "${features[i]['image']}",
+                        color: ManagerColor.mainred,
+                        width: 50.w,
+                        height: 50.h,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10.0),

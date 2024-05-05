@@ -1,17 +1,20 @@
+import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ClicKedText extends StatelessWidget {
   final String text;
-  final String onPressed;
+  final String routeName;
+
   final double? fontSize;
   final FontWeight? fontWeight;
   const ClicKedText(
-      {required this.text,
-      required this.onPressed,
+      {super.key,
+      required this.text,
       this.fontSize,
-      this.fontWeight});
+      this.fontWeight,
+      required this.routeName});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class ClicKedText extends StatelessWidget {
               fontWeight: fontWeight ?? FontWeight.w400,
             )),
         onTap: () {
-          Navigator.pushNamed(context, onPressed);
+          context.pushNamed(routeName);
         });
   }
 }

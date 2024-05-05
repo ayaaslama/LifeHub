@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +55,7 @@ class DonatingWhatToExcept extends StatelessWidget {
               123,
               const Color.fromRGBO(255, 107, 107, 0.16),
               Colors.white,
-              () => Navigator.pushNamed(context, '/befor_donate')),
+              () => context.pushNamed(Routes.beforDonate)),
           container(
               "assets/images/Rectangle 6656.png",
               "In-Center",
@@ -61,7 +63,7 @@ class DonatingWhatToExcept extends StatelessWidget {
               123,
               const Color.fromRGBO(0, 179, 255, 0.15),
               Colors.white,
-              () => Navigator.pushNamed(context, '/in_center')),
+              () => context.pushNamed(Routes.inCenter)),
           container(
               "assets/images/Rectangle 6658.png",
               "After",
@@ -69,7 +71,7 @@ class DonatingWhatToExcept extends StatelessWidget {
               123,
               const Color.fromRGBO(255, 182, 64, 0.21),
               Colors.white,
-              () => Navigator.pushNamed(context, '/after_donate')),
+              () => context.pushNamed(Routes.afterDonate)),
         ],
       ),
     ]));

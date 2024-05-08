@@ -2,17 +2,17 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Crud {
-  getRequest(String url) async {
+  fetchData(String url) async {
     try {
-      var response = await http.get(Uri.parse(url));
+      final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        var responseBody = jsonDecode(response.body);
-        return responseBody;
+        final data = json.decode(response.body);
+        return data;
       } else {
-        print("Error ${response.statusCode}");
+        throw Exception('Error ${response.statusCode}');
       }
     } catch (e) {
-      print("Error Catch $e");
+      throw Exception('Error fetching data: $e');
     }
   }
 
@@ -29,7 +29,6 @@ class Crud {
       } else if (response.statusCode == 400) {
         onComplete(false);
         print("Error 400: Bad request. Please check your input data.");
-        // Add your handling logic for Error 400 here
       } else {
         print("Error ${response.statusCode}");
       }

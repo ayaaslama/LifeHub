@@ -1,5 +1,6 @@
 import 'package:blood_life/core/helper/constants.dart';
 import 'package:blood_life/core/routing/app_router.dart';
+import 'package:blood_life/core/widgets/navigation_bar.dart';
 import 'package:blood_life/features/forget_password/logic/cubit/forgetpassword_cubit.dart';
 import 'package:blood_life/features/forget_password/logic/cubit/new_password_cubit.dart';
 import 'package:blood_life/features/login/logic/cubit/login_cubit.dart';
@@ -53,7 +54,7 @@ class BloodLife extends StatelessWidget {
             primaryColor: Colors.grey,
             scaffoldBackgroundColor: Colors.white,
           ),
-          home: const SplashScreen(),
+          home: const MyNavigationBar(),
 
           debugShowCheckedModeBanner: false,
           scaffoldMessengerKey: scaffoldKey,

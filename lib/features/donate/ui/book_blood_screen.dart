@@ -1,5 +1,7 @@
 import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/helper/feild_item.dart';
+import 'package:blood_life/core/networking/crud.dart';
+import 'package:blood_life/core/networking/links_api.dart';
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
@@ -16,11 +18,39 @@ class BookBloodScreen extends StatefulWidget {
 }
 
 class _BloodRegisterScreenState extends State<BookBloodScreen> {
-  TextEditingController date = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController selectHospital = TextEditingController();
-  final TextEditingController selectDate = TextEditingController();
-  final TextEditingController selectHoure = TextEditingController();
+  Crud _crud = Crud();
+
+  final TextEditingController id = TextEditingController();
+  final TextEditingController hospitalCenter = TextEditingController();
+  final TextEditingController date = TextEditingController();
+  final TextEditingController hour = TextEditingController();
+  String? selectedCenter;
+  List<String> center = [
+    'Cairo Center',
+    'Alexandria Center',
+    'Giza Center',
+    'Sharm El Sheikh Center',
+    'Luxor Center',
+    // Add more cities as needed
+  ];
+
+  Future<void> _register() async {
+    var response = await _crud.postRequest(
+        "$linkServerName/blood_register",
+        ({
+          "id": id.text,
+          "hospitalCenter": hospitalCenter.text,
+          "date": date.text,
+          "hour": hour.text,
+        }), (bool success) {
+      if (success && _formKey.currentState!.validate()) {
+        print("User Registered successfully");
+      } else {
+        print("Register Fail");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,42 +97,64 @@ class _BloodRegisterScreenState extends State<BookBloodScreen> {
                           children: [
                             MyTextField(
                               item: FieldItem(
+                                  fieldName: 'National ID',
+                                  useSuffixIcon: true,
+                                  myController: id),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            MyTextField(
+                              item: FieldItem(
                                   fieldName: 'Select Hospital-Center',
                                   useSuffixIcon: true,
-                                  suffixIcon: IconButton(
-                                      onPressed: () {},
-                                      icon: Image.asset(
-                                        'assets/images/detalies.png',
-                                        color: ManagerColor.mainred,
-                                      )),
-                                  myController: selectHospital),
+                                  suffixIcon: PopupMenuButton<String>(
+                                    icon: Image.asset(
+                                      'assets/images/detalies.png',
+                                      color: ManagerColor.mainred,
+                                    ),
+                                    itemBuilder: (BuildContext context) {
+                                      return center.map((String center) {
+                                        return PopupMenuItem<String>(
+                                          value: center,
+                                          child: Text(center),
+                                        );
+                                      }).toList();
+                                    },
+                                    onSelected: (String? newValue) {
+                                      setState(() {
+                                        selectedCenter = newValue;
+                                        hospitalCenter.text = newValue ?? '';
+                                      });
+                                    },
+                                  ),
+                                  myController: hospitalCenter),
                             ),
                             SizedBox(
                               height: 20.h,
                             ),
                             DateTextField(
-                              labelText: 'Date Of Birth',
-                              icon: Icons.date_range,
+                              borderSideColor: ManagerColor.mainred,
+                              labelText: 'Select Date',
+                              icon: Icons.date_range_rounded,
+                              iconColor: ManagerColor.mainred,
                               onDateSelected: (selectedDate) {
-                                // Handle the selected date
                                 print('Selected date: $selectedDate');
                               },
-                              dateController: selectDate,
+                              dateController: date,
+                              primaryColor: ManagerColor.mainred,
                             ),
                             const SizedBox(
                               height: 20,
                             ),
                             MyTextField(
                               item: FieldItem(
-                                  fieldName: 'Select Hour',
-                                  useSuffixIcon: true,
-                                  suffixIcon: IconButton(
-                                      onPressed: () {},
-                                      icon: Image.asset(
-                                        'assets/images/detalies.png',
-                                        color: ManagerColor.mainred,
-                                      )),
-                                  myController: selectHoure),
+                                borderSideColor: ManagerColor.mainred,
+                                fieldName: 'Hour',
+                                keyboardType: TextInputType.text,
+                                useSuffixIcon: true,
+                                myController: hour,
+                              ),
                             ),
                           ],
                         ),
@@ -110,12 +162,16 @@ class _BloodRegisterScreenState extends State<BookBloodScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Center(
+                      Center(
                         child: AppTextButton(
-                          textButton: 'Book',
-                          buttonWidth: 300,
-                          backgroundColor: ManagerColor.mainred,
-                        ),
+                            textButton: 'Book',
+                            buttonWidth: 300,
+                            backgroundColor: ManagerColor.mainred,
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _register();
+                              }
+                            }),
                       )
                     ])),
           ],

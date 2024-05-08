@@ -14,6 +14,7 @@ import 'package:blood_life/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Login extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
@@ -22,6 +23,8 @@ class Login extends StatelessWidget {
   bool isLoading = false;
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
+  final secureStorage = FlutterSecureStorage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +34,7 @@ class Login extends StatelessWidget {
             isLoading = true;
           } else if (state is LoginSuccess) {
             isLoading = false;
-            context.pushNamed(Routes.home);
+            context.pushNamed(Routes.myNavigationBar);
           } else if (state is LoginFailure) {
             showSnackBar("Something Went Wrong", ManagerColor.mainred);
             isLoading = false;
@@ -105,20 +108,7 @@ class Login extends StatelessWidget {
                             useSuffixIcon: true,
                             icon: Icons.lock_outlined,
                             useicon: true,
-                            //obscureText: _obscureText,
                             keyboardType: TextInputType.visiblePassword,
-                            // suffixIcon: IconButton(
-                            //   icon: Icon(
-                            //     _obscureText
-                            //         ? Icons.visibility
-                            //         : Icons.visibility_off,
-                            //   ),
-                            //   onPressed: () {
-                            //     setState(() {
-                            //       _obscureText = !_obscureText;
-                            //     });
-                            //   },
-                            // ),
                           ),
                         ),
                       ],
@@ -142,8 +132,11 @@ class Login extends StatelessWidget {
                             onPressed: () async {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
+
                                 BlocProvider.of<LoginCubit>(context)
                                     .login(email: email!, password: password!);
+                                await secureStorage.write(
+                                    key: 'email', value: email!);
                               }
                             },
                             formKey: formKey,

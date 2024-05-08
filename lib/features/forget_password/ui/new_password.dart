@@ -43,7 +43,7 @@ class NewPassword extends StatelessWidget {
             isLoading = true;
           } else if (state is NewPasswordSuccess) {
             isLoading = false;
-            context.pushNamed(Routes.home);
+            context.pushNamed(Routes.myNavigationBar);
           } else if (state is NewPasswordFailure) {
             isLoading = false;
             showSnackBar("Something Went Wrong", ManagerColor.mainred);

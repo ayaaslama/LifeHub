@@ -40,7 +40,7 @@ class EmailForForgetPassword extends StatelessWidget {
             isLoading = true;
           } else if (state is ForgetPasswordSuccess) {
             isLoading = false;
-            context.pushNamed(Routes.home);
+            context.pushNamed(Routes.newPassword);
           } else if (state is ForgetPasswordFailure) {
             isLoading = false;
             showSnackBar("Something Went Wrong", ManagerColor.mainred);

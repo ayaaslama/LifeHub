@@ -1,5 +1,7 @@
 import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/helper/feild_item.dart';
+import 'package:blood_life/core/networking/crud.dart';
+import 'package:blood_life/core/networking/links_api.dart';
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
@@ -17,11 +19,39 @@ class BookPlasmaScreen extends StatefulWidget {
 }
 
 class _BloodRegisterScreenState extends State<BookPlasmaScreen> {
-  TextEditingController date = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController selectHospital = TextEditingController();
-  final TextEditingController selectDate = TextEditingController();
-  final TextEditingController selectHoure = TextEditingController();
+  Crud _crud = Crud();
+
+  final TextEditingController id = TextEditingController();
+  final TextEditingController hospitalCenter = TextEditingController();
+  final TextEditingController date = TextEditingController();
+  final TextEditingController hour = TextEditingController();
+  String? selectedCenter;
+  List<String> center = [
+    'Cairo Center',
+    'Alexandria Center',
+    'Giza Center',
+    'Sharm El Sheikh Center',
+    'Luxor Center',
+    // Add more cities as needed
+  ];
+
+  Future<void> _register() async {
+    var response = await _crud.postRequest(
+        "$linkServerName/plasma_register",
+        ({
+          "id": id.text,
+          "hospitalCenter": hospitalCenter.text,
+          "date": date.text,
+          "hour": hour.text,
+        }), (bool success) {
+      if (success && _formKey.currentState!.validate()) {
+        print("User Registered successfully");
+      } else {
+        print("Register Fail");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,18 +98,38 @@ class _BloodRegisterScreenState extends State<BookPlasmaScreen> {
                           children: [
                             MyTextField(
                               item: FieldItem(
-                                borderSideColor: ManagerColor.plasmaColor,
-                                fieldName: 'Select Hospital-Center',
-                                keyboardType: TextInputType.text,
-                                useSuffixIcon: true,
-                                suffixIcon: IconButton(
-                                    onPressed: () {},
+                                  fieldName: 'National ID',
+                                  useSuffixIcon: true,
+                                  myController: id),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select Hospital-Center',
+                                  useSuffixIcon: true,
+                                  suffixIcon: PopupMenuButton<String>(
                                     icon: Image.asset(
                                       'assets/images/detalies.png',
                                       color: ManagerColor.plasmaColor,
-                                    )),
-                                myController: selectHospital,
-                              ),
+                                    ),
+                                    itemBuilder: (BuildContext context) {
+                                      return center.map((String center) {
+                                        return PopupMenuItem<String>(
+                                          value: center,
+                                          child: Text(center),
+                                        );
+                                      }).toList();
+                                    },
+                                    onSelected: (String? newValue) {
+                                      setState(() {
+                                        selectedCenter = newValue;
+                                        hospitalCenter.text = newValue ?? '';
+                                      });
+                                    },
+                                  ),
+                                  myController: hospitalCenter),
                             ),
                             SizedBox(
                               height: 20.h,
@@ -92,7 +142,7 @@ class _BloodRegisterScreenState extends State<BookPlasmaScreen> {
                               onDateSelected: (selectedDate) {
                                 print('Selected date: $selectedDate');
                               },
-                              dateController: selectDate,
+                              dateController: date,
                               primaryColor: ManagerColor.plasmaColor,
                             ),
                             const SizedBox(
@@ -101,16 +151,10 @@ class _BloodRegisterScreenState extends State<BookPlasmaScreen> {
                             MyTextField(
                               item: FieldItem(
                                 borderSideColor: ManagerColor.plasmaColor,
-                                fieldName: 'Select Hour',
+                                fieldName: 'Hour',
                                 keyboardType: TextInputType.text,
                                 useSuffixIcon: true,
-                                suffixIcon: IconButton(
-                                    onPressed: () {},
-                                    icon: Image.asset(
-                                      'assets/images/detalies.png',
-                                      color: ManagerColor.plasmaColor,
-                                    )),
-                                myController: selectHoure,
+                                myController: hour,
                               ),
                             ),
                           ],
@@ -119,12 +163,16 @@ class _BloodRegisterScreenState extends State<BookPlasmaScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Center(
+                      Center(
                         child: AppTextButton(
-                          textButton: 'Book',
-                          buttonWidth: 300,
-                          backgroundColor: ManagerColor.plasmaColor,
-                        ),
+                            textButton: 'Book',
+                            buttonWidth: 300,
+                            backgroundColor: ManagerColor.plasmaColor,
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _register();
+                              }
+                            }),
                       )
                     ])),
           ],

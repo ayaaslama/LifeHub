@@ -1,5 +1,7 @@
 import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/helper/feild_item.dart';
+import 'package:blood_life/core/networking/crud.dart';
+import 'package:blood_life/core/networking/links_api.dart';
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
@@ -17,11 +19,39 @@ class SearchPlasmaScreen extends StatefulWidget {
 }
 
 class _BloodRegisterScreenState extends State<SearchPlasmaScreen> {
-  TextEditingController date = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController selectHospital = TextEditingController();
-  final TextEditingController selectDate = TextEditingController();
-  final TextEditingController selectHoure = TextEditingController();
+  Crud _crud = Crud();
+
+  final TextEditingController id = TextEditingController();
+  final TextEditingController hospitalCenter = TextEditingController();
+  final TextEditingController date = TextEditingController();
+  final TextEditingController plasmaType = TextEditingController();
+  String? selectedCenter;
+  List<String> center = [
+    'Cairo Center',
+    'Alexandria Center',
+    'Giza Center',
+    'Sharm El Sheikh Center',
+    'Luxor Center',
+    // Add more cities as needed
+  ];
+
+  Future<void> _booked() async {
+    var response = await _crud.postRequest(
+        "$linkServerName/plasma_request",
+        ({
+          "id": id.text,
+          "hospitalCenter": hospitalCenter.text,
+          "date": date.text,
+          "plasmaType": plasmaType.text,
+        }), (bool success) {
+      if (success && _formKey.currentState!.validate()) {
+        print("User Booked successfully");
+      } else {
+        print("Booked Fail");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +60,7 @@ class _BloodRegisterScreenState extends State<SearchPlasmaScreen> {
         backgroundColor: ManagerColor.plasmaColor,
         centerTitle: true,
         title: Text(
-          'Donate Register-Cont',
+          'Request-Cont',
           style: TextStyle(
             color: Colors.white,
             fontSize: 18.sp,
@@ -56,7 +86,7 @@ class _BloodRegisterScreenState extends State<SearchPlasmaScreen> {
                     children: [
                       Center(
                         child: Text(
-                          ' Plasma Register-Cont',
+                          ' Plasma Request-Cont',
                           style: TextStyle(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w600,
@@ -69,18 +99,38 @@ class _BloodRegisterScreenState extends State<SearchPlasmaScreen> {
                           children: [
                             MyTextField(
                               item: FieldItem(
-                                borderSideColor: ManagerColor.plasmaColor,
-                                fieldName: 'Select Hospital-Center',
-                                keyboardType: TextInputType.text,
-                                useSuffixIcon: true,
-                                suffixIcon: IconButton(
-                                    onPressed: () {},
+                                  fieldName: 'National ID',
+                                  useSuffixIcon: true,
+                                  myController: id),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            MyTextField(
+                              item: FieldItem(
+                                  fieldName: 'Select Hospital-Center',
+                                  useSuffixIcon: true,
+                                  suffixIcon: PopupMenuButton<String>(
                                     icon: Image.asset(
                                       'assets/images/detalies.png',
                                       color: ManagerColor.plasmaColor,
-                                    )),
-                                myController: selectHospital,
-                              ),
+                                    ),
+                                    itemBuilder: (BuildContext context) {
+                                      return center.map((String center) {
+                                        return PopupMenuItem<String>(
+                                          value: center,
+                                          child: Text(center),
+                                        );
+                                      }).toList();
+                                    },
+                                    onSelected: (String? newValue) {
+                                      setState(() {
+                                        selectedCenter = newValue;
+                                        hospitalCenter.text = newValue ?? '';
+                                      });
+                                    },
+                                  ),
+                                  myController: hospitalCenter),
                             ),
                             SizedBox(
                               height: 20.h,
@@ -93,7 +143,7 @@ class _BloodRegisterScreenState extends State<SearchPlasmaScreen> {
                               onDateSelected: (selectedDate) {
                                 print('Selected date: $selectedDate');
                               },
-                              dateController: selectDate,
+                              dateController: date,
                               primaryColor: ManagerColor.plasmaColor,
                             ),
                             const SizedBox(
@@ -102,16 +152,10 @@ class _BloodRegisterScreenState extends State<SearchPlasmaScreen> {
                             MyTextField(
                               item: FieldItem(
                                 borderSideColor: ManagerColor.plasmaColor,
-                                fieldName: 'Select Hour',
+                                fieldName: 'Plasma Type',
                                 keyboardType: TextInputType.text,
                                 useSuffixIcon: true,
-                                suffixIcon: IconButton(
-                                    onPressed: () {},
-                                    icon: Image.asset(
-                                      'assets/images/detalies.png',
-                                      color: ManagerColor.plasmaColor,
-                                    )),
-                                myController: selectHoure,
+                                myController: plasmaType,
                               ),
                             ),
                             const SizedBox(
@@ -120,12 +164,16 @@ class _BloodRegisterScreenState extends State<SearchPlasmaScreen> {
                           ],
                         ),
                       ),
-                      const Center(
+                      Center(
                         child: AppTextButton(
-                          textButton: 'Book',
-                          buttonWidth: 300,
-                          backgroundColor: ManagerColor.plasmaColor,
-                        ),
+                            textButton: 'Book',
+                            buttonWidth: 300,
+                            backgroundColor: ManagerColor.plasmaColor,
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _booked();
+                              }
+                            }),
                       )
                     ])),
           ],

@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SvgPicture.asset(
                           'assets/svgs/home.svg',
-                          height: 130.h,
+                          height: 100.h,
                         ),
                       ],
                     ),

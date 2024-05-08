@@ -89,17 +89,6 @@ class _ProfileSreenState extends State<ProfileSreen> {
                 SizedBox(
                   height: 20.h,
                 ),
-                Text(
-                  'Radwa Nagy',
-                  style: TextStyles.font20K7lybold,
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Text(
-                  'National Id',
-                  style: TextStyles.font13GreyRegular,
-                ),
                 SizedBox(
                   height: 20.h,
                 ),

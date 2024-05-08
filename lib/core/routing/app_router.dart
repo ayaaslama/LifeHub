@@ -9,6 +9,7 @@ import 'package:blood_life/features/donate/ui/book_blood_screen.dart';
 import 'package:blood_life/features/donate/ui/book_plasma_screen.dart';
 import 'package:blood_life/features/donate/ui/donate_blood_screen.dart';
 import 'package:blood_life/features/forget_password/ui/forget_password.dart';
+import 'package:blood_life/features/forget_password/ui/new_password.dart';
 import 'package:blood_life/features/home/ui/after_donate_screen.dart';
 import 'package:blood_life/features/home/ui/befor_donate_screen.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
@@ -94,6 +95,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const InCenter());
       case Routes.afterDonate:
         return MaterialPageRoute(builder: (_) => const AfterDonate());
+      case Routes.newPassword:
+        return MaterialPageRoute(builder: (_) => NewPassword());
 
       // case Routes.emailForVerify:
       //   return MaterialPageRoute(builder: (_) => const EmailForVerify());

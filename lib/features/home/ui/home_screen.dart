@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                       context.pushNamed(Routes.mapScreen);
                                     },
                                     child: Container(
-                                        width: 120.w,
+                                        width: 100.w,
                                         height: 38.h,
                                         decoration: BoxDecoration(
                                             color: Colors.white,
@@ -105,11 +105,13 @@ class _HomePageState extends State<HomePage> {
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 15, vertical: 10),
-                                          child: Text(
-                                            " Find Nearby",
-                                            style: GoogleFonts.montserrat(
-                                                textStyle:
-                                                    TextStyles.font12K7lybold),
+                                          child: Center(
+                                            child: Text(
+                                              " Find Nearby",
+                                              style: GoogleFonts.montserrat(
+                                                  textStyle: TextStyles
+                                                      .font12K7lybold),
+                                            ),
                                           ),
                                         ))),
                               ],

@@ -1,9 +1,11 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/features/Schedule/ui/schedule.dart';
+import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
 import 'package:blood_life/features/profile/profile_screen.dart';
 import 'package:blood_life/features/rewards/rewards.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyNavigationBar extends StatefulWidget {
   const MyNavigationBar({super.key});
@@ -16,6 +18,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   int selectedIndex = 0;
   List<Widget> widgetPage = [
     const HomePage(),
+    const AiGenerator(),
     const RewardsScreen(),
     const Schedule(),
     const ProfileSreen(),
@@ -34,14 +37,22 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
             selectedIndex = index;
           });
         },
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined), label: 'Home'),
           BottomNavigationBarItem(
+              icon: Image(
+                image: const AssetImage("assets/images/robot.png"),
+                width: 28.w,
+                height: 28.h,
+                color: ManagerColor.maink7ly,
+              ),
+              label: 'AI'),
+          const BottomNavigationBarItem(
               icon: Icon(Icons.card_giftcard_outlined), label: 'Rewards'),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.event_note_outlined), label: 'Schedule'),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined), label: 'Profile'),
         ],
       ),

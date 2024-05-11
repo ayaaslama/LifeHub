@@ -1,9 +1,9 @@
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/widgets/navigation_bar.dart';
-import 'package:blood_life/features/additional_service/additional_service_screen.dart';
-import 'package:blood_life/features/additional_service/blood_filtration_service.dart';
-import 'package:blood_life/features/additional_service/blood_test_service.dart';
-import 'package:blood_life/features/additional_service/washed_rbcs_service.dart';
+import 'package:blood_life/features/additional_service/ui/additional_service_screen.dart';
+import 'package:blood_life/features/additional_service/ui/blood_filtration.dart';
+import 'package:blood_life/features/additional_service/ui/blood_rbcs.dart';
+import 'package:blood_life/features/additional_service/ui/blood_test.dart';
 import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
 import 'package:blood_life/features/donate/ui/donate_blood.dart';
 import 'package:blood_life/features/donate/ui/donate_plasma.dart';

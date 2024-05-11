@@ -2,7 +2,7 @@ import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
-import 'package:blood_life/features/additional_service/widget/container_for_service.dart';
+import 'package:blood_life/features/additional_service/ui/widgets/blood_of_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,6 +1,9 @@
 import 'package:blood_life/core/helper/constants.dart';
 import 'package:blood_life/core/routing/app_router.dart';
 import 'package:blood_life/core/widgets/navigation_bar.dart';
+import 'package:blood_life/features/additional_service/logic/cubit/bloodfilteration_cubit.dart';
+import 'package:blood_life/features/additional_service/logic/cubit/bloodrbcs_cubit.dart';
+import 'package:blood_life/features/additional_service/logic/cubit/bloodtest_cubit.dart';
 import 'package:blood_life/features/donate/logic/cubit/donateblood_cubit.dart';
 import 'package:blood_life/features/donate/logic/cubit/donateplasma_cubit.dart';
 import 'package:blood_life/features/donate/ui/donate_screen.dart';
@@ -67,6 +70,15 @@ class BloodLife extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => RequestplasmaCubit(),
+          ),
+          BlocProvider(
+            create: (context) => BloodfilterationCubit(),
+          ),
+          BlocProvider(
+            create: (context) => BloodtestCubit(),
+          ),
+          BlocProvider(
+            create: (context) => BloodrbcsCubit(),
           ),
         ],
         child: MaterialApp(

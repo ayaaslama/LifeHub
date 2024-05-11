@@ -1,8 +1,7 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/fonts_weight_helper.dart';
-import 'package:blood_life/core/widgets/navigation_bar.dart';
-
-import 'package:blood_life/features/onboarding/onboarding.dart';
+import 'package:blood_life/features/donate/ui/donate_blood.dart';
+import 'package:blood_life/features/donate/ui/donate_plasma.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,8 +17,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => const MyNavigationBar()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (_) => const DonatePlasmaScreen()));
     });
     super.initState();
   }

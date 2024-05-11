@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
@@ -12,100 +14,126 @@ class AfterDonate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            context.pushNamed(Routes.myNavigationBar);
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: ManagerColor.maink7ly,
+        ),
         elevation: 0,
-        backgroundColor: ManagerColor.mainred,
-        title: const Text(
-          "After you donate",
+        backgroundColor: ManagerColor.white,
+        title: Text(
+          'Befor you donate',
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
+            color: ManagerColor.maink7ly,
+            fontSize: 18.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
-        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 10, bottom: 0, left: 20, right: 0),
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            Center(
-              child: Image.asset(
-                'assets/images/Rectangle 6659 (2).png',
-                height: 174,
-                width: 180,
-              ),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'After you Donate',
+                            style: TextStyles.font16K7lybold,
+                          ),
+                          Image.asset(
+                            'assets/images/Rectangle 6659 (2).png',
+                            height: 70,
+                            width: 70,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      Center(
+                        child: Container(
+                          height: 280.h,
+                          width: 300.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              color: ManagerColor.mainred,
+                              width: 1,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: 10.w, top: 5.h, bottom: 5.h),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "1-Rest for a few minutes and have a snack provided by the blood donation center.",
+                                  style: TextStyles.font16GreyMedium,
+                                ),
+                                Text(
+                                  "2-Drink plenty of fluids to stay hydrated",
+                                  style: TextStyles.font16GreyMedium,
+                                ),
+                                Text(
+                                  "3-Avoid heavy lifting or strenuous activities for the rest of the day.",
+                                  style: TextStyles.font16GreyMedium,
+                                ),
+                                Text(
+                                  "4. Eat a healthy meal with iron-rich foods to replenish your energy",
+                                  style: TextStyles.font16GreyMedium,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                'After you donate',
-                textAlign: TextAlign.center,
-                style: TextStyles.font20K7lybold,
+              padding: EdgeInsets.only(left: 35.w, right: 35.w, top: 20.h),
+              child: Column(
+                children: [
+                  Text(
+                    'Always consult with medical professionals ',
+                    style: TextStyles.font14mainK7lysemiBold,
+                  ),
+                  Text(
+                    'personalized advice based on your ',
+                    style: TextStyles.font14mainK7lysemiBold,
+                  ),
+                  Text(
+                    'health condition.',
+                    style: TextStyles.font14mainK7lysemiBold,
+                  ),
+                ],
               ),
             ),
             SizedBox(
-              height: 300,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '1. Rest for a few minutes and have a \nsnack provided by the blood donation \ncenter.',
-                      style: GoogleFonts.inriaSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 23,
-                          letterSpacing: -0.3),
-                    ),
-                    Text(
-                      '2. Drink plenty of fluids to stay \nhydrated.',
-                      style: GoogleFonts.inriaSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 23,
-                          letterSpacing: -0.3),
-                    ),
-                    Text(
-                      "3. Avoid heavy lifting or strenuous \nactivities for the rest of the day.",
-                      style: GoogleFonts.inriaSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 23,
-                          letterSpacing: -0.3),
-                    ),
-                    Text(
-                      "4. Eat a healthy meal with iron-rich \nfoods to replenish your energy.",
-                      style: GoogleFonts.inriaSans(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 23,
-                          letterSpacing: -0.3),
-                    )
-                  ]),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: SizedBox(
-                height: 80.h,
-                width: 400.w,
-                child: const Text(
-                  '  Always consult with medical \nprofessionals for personalized advice \n     based on your health condition.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(128, 128, 128, 1),
-                      fontWeight: FontWeight.w700,
-                      fontSize: 17,
-                      letterSpacing: -0.3),
-                ),
-              ),
+              height: 15.h,
             ),
             AppTextButton(
-              textButton: "OK, Understand it",
-              buttonWidth: 281.w,
-              backgroundColor: const Color.fromRGBO(116, 218, 127, 1),
-              onPressed: () => {
-                Navigator.pushNamed(context, '/home'),
+              textButton: 'OK, Understand it',
+              onPressed: () {
+                context.pushReplacementNamed(Routes.profileSreen);
               },
+            ),
+            SizedBox(
+              height: 10.h,
             ),
           ],
         ),

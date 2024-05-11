@@ -139,7 +139,7 @@ class _ProfileSreenState extends State<ProfileSreen> {
                 ),
                 indexChange == "personal"
                     ? const MedicalInfoWidget()
-                    : const PersonalInfoWidget()
+                    : PersonalInfoWidget()
               ],
             ),
           )

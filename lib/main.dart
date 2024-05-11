@@ -1,9 +1,15 @@
 import 'package:blood_life/core/helper/constants.dart';
 import 'package:blood_life/core/routing/app_router.dart';
 import 'package:blood_life/core/widgets/navigation_bar.dart';
+import 'package:blood_life/features/donate/logic/cubit/donateblood_cubit.dart';
+import 'package:blood_life/features/donate/logic/cubit/donateplasma_cubit.dart';
+import 'package:blood_life/features/donate/ui/donate_screen.dart';
 import 'package:blood_life/features/forget_password/logic/cubit/forgetpassword_cubit.dart';
 import 'package:blood_life/features/forget_password/logic/cubit/new_password_cubit.dart';
 import 'package:blood_life/features/login/logic/cubit/login_cubit.dart';
+import 'package:blood_life/features/profile/logic/cubit/personal_cubit.dart';
+import 'package:blood_life/features/request/logic/cubit/requestblood_cubit.dart';
+import 'package:blood_life/features/request/logic/cubit/requestplasma_cubit.dart';
 import 'package:blood_life/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:blood_life/features/splash/splash_screen.dart';
 import 'package:blood_life/features/verifiction/logic/cubit/cubit/code_verify_cubit.dart';
@@ -47,6 +53,21 @@ class BloodLife extends StatelessWidget {
           BlocProvider(
             create: (context) => SignupCubit(),
           ),
+          BlocProvider(
+            create: (context) => PersonalCubit(),
+          ),
+          BlocProvider(
+            create: (context) => DonatebloodCubit(),
+          ),
+          BlocProvider(
+            create: (context) => DonateplasmaCubit(),
+          ),
+          BlocProvider(
+            create: (context) => RequestbloodCubit(),
+          ),
+          BlocProvider(
+            create: (context) => RequestplasmaCubit(),
+          ),
         ],
         child: MaterialApp(
           title: 'LifeBlood App',
@@ -54,7 +75,7 @@ class BloodLife extends StatelessWidget {
             primaryColor: Colors.grey,
             scaffoldBackgroundColor: Colors.white,
           ),
-          home: const MyNavigationBar(),
+          home: const SplashScreen(),
 
           debugShowCheckedModeBanner: false,
           scaffoldMessengerKey: scaffoldKey,

@@ -23,7 +23,7 @@ class Login extends StatelessWidget {
   bool isLoading = false;
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
-  final secureStorage = FlutterSecureStorage();
+  final secureStorage = const FlutterSecureStorage();
 
   @override
   Widget build(BuildContext context) {

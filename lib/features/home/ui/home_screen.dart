@@ -2,24 +2,17 @@ import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
-import 'package:blood_life/core/widgets/app_clicked_text.dart';
 import 'package:blood_life/features/home/ui/widgets/donation_request.dart';
 import 'package:blood_life/features/home/ui/widgets/lisview_builder_of_what_you_need.dart';
-import 'package:blood_life/features/profile/donating_what_to_except.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                                       context.pushNamed(Routes.mapScreen);
                                     },
                                     child: Container(
-                                        width: 100.w,
+                                        width: 130.w,
                                         height: 38.h,
                                         decoration: BoxDecoration(
                                             color: Colors.white,

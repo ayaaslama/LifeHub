@@ -5,9 +5,9 @@ import 'package:blood_life/features/additional_service/blood_filtration_service.
 import 'package:blood_life/features/additional_service/blood_test_service.dart';
 import 'package:blood_life/features/additional_service/washed_rbcs_service.dart';
 import 'package:blood_life/features/ai_generator/ui/ai_generator.dart';
-import 'package:blood_life/features/donate/ui/book_blood_screen.dart';
-import 'package:blood_life/features/donate/ui/book_plasma_screen.dart';
-import 'package:blood_life/features/donate/ui/donate_blood_screen.dart';
+import 'package:blood_life/features/donate/ui/donate_blood.dart';
+import 'package:blood_life/features/donate/ui/donate_plasma.dart';
+import 'package:blood_life/features/donate/ui/donate_screen.dart';
 import 'package:blood_life/features/forget_password/ui/forget_password.dart';
 import 'package:blood_life/features/forget_password/ui/new_password.dart';
 import 'package:blood_life/features/home/ui/after_donate_screen.dart';
@@ -22,9 +22,9 @@ import 'package:blood_life/features/profile/guidline/guidlines_screen.dart';
 import 'package:blood_life/features/profile/profile_screen.dart';
 import 'package:blood_life/features/profile/setting/setting_screen.dart';
 import 'package:blood_life/features/questionnaires/ui/questionnaires.dart';
-import 'package:blood_life/features/request/ui/book_request_blood_screen.dart';
-import 'package:blood_life/features/request/ui/book_request_plasma_screen.dart';
-import 'package:blood_life/features/request/ui/request_blood_screen.dart';
+import 'package:blood_life/features/request/ui/request_blood.dart';
+import 'package:blood_life/features/request/ui/request_plasma.dart';
+import 'package:blood_life/features/request/ui/request_screen.dart';
 import 'package:blood_life/features/signup/ui/signup_screen.dart';
 import 'package:blood_life/features/verifiction/ui/code_verify.dart';
 import 'package:blood_life/features/verifiction/ui/email_verify.dart';
@@ -64,7 +64,7 @@ class AppRouter {
       case Routes.bookBloodScreen:
         return MaterialPageRoute(builder: (_) => const BookBloodScreen());
       case Routes.bookPlasmaScreen:
-        return MaterialPageRoute(builder: (_) => const BookPlasmaScreen());
+        return MaterialPageRoute(builder: (_) => const DonatePlasmaScreen());
       case Routes.searchBloodScreen:
         return MaterialPageRoute(builder: (_) => const SearchBloodScreen());
       case Routes.searchPlasmaScreen:

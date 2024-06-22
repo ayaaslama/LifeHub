@@ -1,3 +1,5 @@
+import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
@@ -12,17 +14,28 @@ class NoteficationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          'Notefication',
+          style: TextStyle(
+            color: ManagerColor.maink7ly,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            context.pushNamed(Routes.myNavigationBar);
+          },
+          icon: const Icon(Icons.arrow_back_ios_sharp),
+          color: ManagerColor.maink7ly,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: Column(
           children: [
-            CustomeAppBar(
-              text: 'Notefication',
-              titleColor: ManagerColor.maink7ly,
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 60),
-              textStyle: TextStyles.font18K7lybold,
-            ),
             SizedBox(
               height: 10.h,
             ),
@@ -42,10 +55,12 @@ class NoteficationScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 30.h),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SvgPicture.asset('assets/svgs/calendar.svg'),
+                      SizedBox(
+                        width: 40.w,
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,10 +82,12 @@ class NoteficationScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 30.h),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SvgPicture.asset('assets/svgs/calendar-2.svg'),
+                      SizedBox(
+                        width: 40.w,
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,

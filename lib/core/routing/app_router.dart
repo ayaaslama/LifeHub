@@ -10,6 +10,7 @@ import 'package:blood_life/features/donate/ui/donate_plasma.dart';
 import 'package:blood_life/features/donate/ui/donate_screen.dart';
 import 'package:blood_life/features/forget_password/ui/forget_password.dart';
 import 'package:blood_life/features/forget_password/ui/new_password.dart';
+import 'package:blood_life/features/helpus/ui/helpus.dart';
 import 'package:blood_life/features/home/ui/after_donate_screen.dart';
 import 'package:blood_life/features/home/ui/befor_donate_screen.dart';
 import 'package:blood_life/features/home/ui/home_screen.dart';
@@ -104,6 +105,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AiGenerator());
       case Routes.questionare:
         return MaterialPageRoute(builder: (_) => const Questionnaires());
+      case Routes.seeAll:
+        return MaterialPageRoute(builder: (_) => const SeeAllScreen());
 
       default:
         return MaterialPageRoute(

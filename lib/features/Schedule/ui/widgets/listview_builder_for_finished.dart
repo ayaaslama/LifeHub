@@ -1,7 +1,11 @@
+import 'package:blood_life/core/networking/crud.dart';
+import 'package:blood_life/core/networking/links_api.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:intl/intl.dart';
 
 class FinishedBlood extends StatefulWidget {
   const FinishedBlood({super.key});
@@ -11,20 +15,34 @@ class FinishedBlood extends StatefulWidget {
 }
 
 class _FinishedBloodState extends State<FinishedBlood> {
-  List data = [
-    {
-      'nameOfCenter': "Tanta Center",
-      'date': 'Fri,24Oct,2023',
-      'time': "4:00 AM",
-      "type": "blood"
-    },
-    {
-      'nameOfCenter': "Tanta Center",
-      'date': 'Fri,24Oct,2023',
-      'time': "4:00 AM",
-      "type": "plasma"
-    },
-  ];
+  List<dynamic> _data = [];
+  final secureStorage = const FlutterSecureStorage();
+
+  late Crud crud;
+
+  @override
+  void initState() {
+    super.initState();
+    crud = Crud();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      String? storedEmail = await secureStorage.read(key: 'email');
+      if (storedEmail != null) {
+        final List<dynamic> dataList = await crud
+            .fetchData("$linkServerName/Schedule-finished?email=$storedEmail");
+        setState(() {
+          _data = dataList;
+        });
+      } else {
+        print('No stored email found');
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +51,17 @@ class _FinishedBloodState extends State<FinishedBlood> {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           padding: EdgeInsets.symmetric(vertical: 10.h),
-          itemCount: data.length,
+          itemCount: _data.length,
           itemBuilder: (context, i) {
+            final data = _data[i];
+            final dTypeOfDonation = data['dTypeOfDonation'];
+            final bloodBank = data['bloodBank'];
+            final type = data['type'];
+            final dateFormat = DateFormat('MM/dd/yyyy');
+            final date = dateFormat.format(dateFormat.parse(data['date2']));
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 10.w),
-              child: data[i]['type'] == "plasma"
+              child: dTypeOfDonation == "Plasma"
                   ? Container(
                       width: 320.w,
                       height: 77.h,
@@ -69,17 +93,17 @@ class _FinishedBloodState extends State<FinishedBlood> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "${data[i]['nameOfCenter']}",
+                                bloodBank,
                                 style: TextStyles.font16K7lybold,
                               ),
                               Text(
-                                "${data[i]['date']}",
+                                type,
                                 style: TextStyles.font14mainK7lyMedium,
                               )
                             ],
                           ),
                           Text(
-                            "${data[i]['time']}",
+                            date,
                             style: TextStyles.font16K7lybold,
                           )
                         ],
@@ -116,17 +140,17 @@ class _FinishedBloodState extends State<FinishedBlood> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "${data[i]['nameOfCenter']}",
+                                bloodBank,
                                 style: TextStyles.font16K7lybold,
                               ),
                               Text(
-                                "${data[i]['date']}",
+                                type,
                                 style: TextStyles.font14mainK7lyMedium,
                               )
                             ],
                           ),
                           Text(
-                            "${data[i]['time']}",
+                            date,
                             style: TextStyles.font16K7lybold,
                           )
                         ],

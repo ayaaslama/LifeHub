@@ -1,15 +1,22 @@
+import 'package:blood_life/features/map/widgets/custom_google_map.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapScreen extends StatefulWidget {
+void main() {
+  runApp(const MapScreen());
+}
+
+class MapScreen extends StatelessWidget {
   const MapScreen({super.key});
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
-}
-
-class _MapScreenState extends State<MapScreen> {
-  @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Location Picker',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const CustomGoogleMap());
   }
 }

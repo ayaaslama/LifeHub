@@ -31,32 +31,34 @@ class Schedule extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 20.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Finished',
-                  style: TextStyles.font18K7lybold,
-                ),
-                const FinishedBlood(),
-                Text(
-                  'Waiting..',
-                  style: TextStyles.font18K7lybold,
-                ),
-                const Waiting(),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20.h,
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Finished',
+                    style: TextStyles.font18K7lybold,
+                  ),
+                  const FinishedBlood(),
+                  Text(
+                    'Waiting ',
+                    style: TextStyles.font18K7lybold,
+                  ),
+                  const Waiting(),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

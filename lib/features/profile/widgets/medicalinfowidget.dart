@@ -4,6 +4,7 @@ import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:intl/intl.dart';
 
 class MedicalInfoWidget extends StatefulWidget {
   const MedicalInfoWidget({super.key});
@@ -40,7 +41,8 @@ class _MedicalInfoWidgetState extends State<MedicalInfoWidget> {
           _plasmaCount = data['plasma_count'];
           _sum = data['sum'];
           _bloodType = data['bloodType'];
-          _dateOfDonate = data['dateOfDonate'];
+          final dateFormat = DateFormat('MM/dd/yyyy');
+          _dateOfDonate = dateFormat.format(dateFormat.parse(data['date']));
         });
         print('Fetched data successfully');
       } else {

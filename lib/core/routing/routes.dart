@@ -28,4 +28,5 @@ class Routes {
   static const String guidlinesScreen = '/guidlines';
   static const String aiGenerator = '/aiGenerator';
   static const String questionare = '/questionare';
+  static const String seeAll = '/seeAll';
 }

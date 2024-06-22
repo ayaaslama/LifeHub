@@ -2,6 +2,7 @@ import 'package:blood_life/core/helper/extension.dart';
 import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
+import 'package:blood_life/core/widgets/app_clicked_text.dart';
 import 'package:blood_life/features/home/ui/widgets/donation_request.dart';
 import 'package:blood_life/features/home/ui/widgets/lisview_builder_of_what_you_need.dart';
 import 'package:flutter/material.dart';
@@ -159,7 +160,7 @@ class HomePage extends StatelessWidget {
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 2.0),
-                                child: Text("Befor",
+                                child: Text("Before",
                                     style: TextStyles.font14mainK7lysemiBold),
                               ),
                             ],
@@ -233,18 +234,14 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Help Us", style: TextStyles.font16K7lybold),
-                        // const ClicKedText(text: 'See All', routeName: '')
+                        const ClicKedText(
+                          text: 'See All',
+                          routeName: Routes.seeAll,
+                        )
                       ]),
                 ),
-                const DonationRequest(
-                  nameHospital: 'Medical center in Tanta',
-                  location: "Tanta Qism 2, First Tanta",
-                  bloodName: 'O+',
-                ),
-                const DonationRequest(
-                  nameHospital: 'Al-Minshawi General Hospital',
-                  location: "Tanta Qism 2 ",
-                  bloodName: 'A-',
+                DonationRequest(
+                  length: 2,
                 ),
               ],
             ),

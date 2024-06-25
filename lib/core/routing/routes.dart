@@ -29,4 +29,5 @@ class Routes {
   static const String aiGenerator = '/aiGenerator';
   static const String questionare = '/questionare';
   static const String seeAll = '/seeAll';
+  static const String faQs = '/faQs';
 }

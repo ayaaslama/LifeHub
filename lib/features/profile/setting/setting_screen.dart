@@ -1,4 +1,5 @@
 import 'package:blood_life/core/helper/extension.dart';
+import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/widgets/app_bar.dart';
 import 'package:blood_life/features/profile/setting/widgets/content_of_setting_container.dart';
@@ -31,17 +32,20 @@ class SettingScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 15.w),
-        child: const Column(
+        child: Column(
           children: [
             ContentOfSetting(
+              onTap: () {},
               text: 'Notification',
               imageAsset: 'assets/svgs/notification.svg',
             ),
             ContentOfSetting(
+              onTap: () => context.pushNamed(Routes.faQs),
               text: 'FAQ',
               imageAsset: 'assets/svgs/message-question.svg',
             ),
             ContentOfSetting(
+              onTap: () {},
               text: 'Logout',
               imageAsset: 'assets/svgs/logout.svg',
             ),

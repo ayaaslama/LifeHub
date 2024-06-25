@@ -19,9 +19,9 @@ import 'package:blood_life/features/home/ui/notfication_screen.dart';
 import 'package:blood_life/features/login/ui/login.dart';
 import 'package:blood_life/features/map/map_screen.dart';
 import 'package:blood_life/features/onboarding/onboarding.dart';
-import 'package:blood_life/features/profile/guidline/guidlines_screen.dart';
 import 'package:blood_life/features/profile/profile_screen.dart';
 import 'package:blood_life/features/profile/setting/setting_screen.dart';
+import 'package:blood_life/features/profile/setting/widgets/faqs.dart';
 import 'package:blood_life/features/questionnaires/ui/questionnaires.dart';
 import 'package:blood_life/features/request/ui/request_blood.dart';
 import 'package:blood_life/features/request/ui/request_plasma.dart';
@@ -88,8 +88,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const BloodFiltration());
       case Routes.washedRcbs:
         return MaterialPageRoute(builder: (_) => const WashedRcbs());
-      case Routes.guidlinesScreen:
-        return MaterialPageRoute(builder: (_) => const GuidlinesScreen());
+
       case Routes.beforDonate:
         return MaterialPageRoute(builder: (_) => const BeforDonate());
       case Routes.inCenter:
@@ -98,6 +97,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AfterDonate());
       case Routes.newPassword:
         return MaterialPageRoute(builder: (_) => NewPassword());
+      case Routes.faQs:
+        return MaterialPageRoute(builder: (_) => const Faqs());
 
       // case Routes.emailForVerify:
       //   return MaterialPageRoute(builder: (_) => const EmailForVerify());

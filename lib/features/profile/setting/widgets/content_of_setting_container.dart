@@ -1,13 +1,18 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ContentOfSetting extends StatelessWidget {
-  const ContentOfSetting(
-      {super.key, required this.text, required this.imageAsset});
+  ContentOfSetting(
+      {super.key,
+      required this.text,
+      required this.imageAsset,
+      required this.onTap});
   final String imageAsset;
+  void Function() onTap;
   final String text;
 
   @override
@@ -25,9 +30,12 @@ class ContentOfSetting extends StatelessWidget {
                 Container(
                   child: Row(
                     children: [
-                      SvgPicture.asset(
-                        imageAsset,
-                        color: ManagerColor.maink7ly,
+                      GestureDetector(
+                        onTap: onTap,
+                        child: SvgPicture.asset(
+                          imageAsset,
+                          color: ManagerColor.maink7ly,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 15.w),

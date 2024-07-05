@@ -1,13 +1,13 @@
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:dio/dio.dart';
 
 class Crud {
-  fetchData(String url) async {
+  final Dio _dio = Dio();
+
+  Future<dynamic> fetchData(String url) async {
     try {
-      final response = await http.get(Uri.parse(url));
+      final response = await _dio.get(url);
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        return data;
+        return response.data;
       } else {
         throw Exception('Error ${response.statusCode}');
       }
@@ -16,12 +16,15 @@ class Crud {
     }
   }
 
-  postRequest(String url, Map data, Function(bool) onComplete) async {
+  Future<void> postRequest(
+      String url, Map<String, dynamic> data, Function(bool) onComplete) async {
     try {
-      final response = await http.post(
-        Uri.parse(url),
-        body: jsonEncode(data),
-        headers: {'Content-Type': 'application/json'},
+      final response = await _dio.post(
+        url,
+        data: data,
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
       );
       if (response.statusCode == 200) {
         print('Done successfully');

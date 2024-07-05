@@ -1,5 +1,6 @@
 import 'package:blood_life/core/networking/crud.dart';
 import 'package:blood_life/core/networking/links_api.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,22 +13,28 @@ class ForgetpasswordCubit extends Cubit<ForgetpasswordState> {
 
   Future<void> forgetPassword({required String email}) async {
     emit(ForgetPasswordLoading());
+
     try {
-      var response = await crud.postRequest(
-          "$linkForgetPassword?email=$email",
-          ({
-            "email": email,
-          }), (bool success) {
-        if (success) {
-          emit(ForgetPasswordSuccess());
-        } else {
-          emit(ForgetPasswordFailure());
-        }
-      });
-      if (response != null && response.statusCode == 200) {
-        emit(ForgetPasswordSuccess());
+      await crud.postRequest(
+        "$linkForgetPassword",
+        {
+          "email": email,
+        },
+        (bool success) {
+          if (success) {
+            emit(ForgetPasswordSuccess());
+          } else {
+            emit(ForgetPasswordFailure());
+          }
+        },
+      );
+    } on DioError catch (e) {
+      if (e.response != null && e.response!.statusCode == 400) {
+        emit(ForgetPasswordFailure());
+      } else {
+        emit(ForgetPasswordFailure());
       }
-    } on Exception catch (e) {
+    } catch (e) {
       emit(ForgetPasswordFailure());
     }
   }

@@ -88,6 +88,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const BloodFiltration());
       case Routes.washedRcbs:
         return MaterialPageRoute(builder: (_) => const WashedRcbs());
+<<<<<<< HEAD
+=======
+
+>>>>>>> 08125564f06ffe5cc47f87c2b5536e17bfe00e3b
       case Routes.beforDonate:
         return MaterialPageRoute(builder: (_) => const BeforDonate());
       case Routes.inCenter:
@@ -96,6 +100,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AfterDonate());
       case Routes.newPassword:
         return MaterialPageRoute(builder: (_) => NewPassword());
+      case Routes.faQs:
+        return MaterialPageRoute(builder: (_) => const Faqs());
 
       // case Routes.emailForVerify:
       //   return MaterialPageRoute(builder: (_) => const EmailForVerify());

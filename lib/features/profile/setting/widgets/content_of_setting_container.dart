@@ -1,6 +1,7 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,6 +12,7 @@ class ContentOfSetting extends StatelessWidget {
       required this.imageAsset,
       required this.onTap});
   final String imageAsset;
+  void Function() onTap;
   final String text;
   Function() onTap;
   @override

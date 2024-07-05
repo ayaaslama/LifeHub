@@ -34,11 +34,7 @@ class SettingScreen extends StatelessWidget {
         child: Column(
           children: [
             ContentOfSetting(
-<<<<<<< HEAD
               onTap: () => context.pushNamed(Routes.noteficationScreen),
-=======
-              onTap: () {},
->>>>>>> 08125564f06ffe5cc47f87c2b5536e17bfe00e3b
               text: 'Notification',
               imageAsset: 'assets/svgs/notification.svg',
             ),
@@ -48,11 +44,7 @@ class SettingScreen extends StatelessWidget {
               imageAsset: 'assets/svgs/message-question.svg',
             ),
             ContentOfSetting(
-<<<<<<< HEAD
               onTap: () => context.pushNamed(Routes.logIn),
-=======
-              onTap: () {},
->>>>>>> 08125564f06ffe5cc47f87c2b5536e17bfe00e3b
               text: 'Logout',
               imageAsset: 'assets/svgs/logout.svg',
             ),

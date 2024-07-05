@@ -88,10 +88,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const BloodFiltration());
       case Routes.washedRcbs:
         return MaterialPageRoute(builder: (_) => const WashedRcbs());
-<<<<<<< HEAD
-=======
-
->>>>>>> 08125564f06ffe5cc47f87c2b5536e17bfe00e3b
       case Routes.beforDonate:
         return MaterialPageRoute(builder: (_) => const BeforDonate());
       case Routes.inCenter:

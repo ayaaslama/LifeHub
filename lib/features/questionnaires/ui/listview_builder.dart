@@ -1,11 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/features/signup/ui/widgets/checked_box.dart';
-<<<<<<< HEAD
 import 'package:flutter/material.dart';
-=======
->>>>>>> 08125564f06ffe5cc47f87c2b5536e17bfe00e3b
 
 class Questions extends StatefulWidget {
   final Map<String, String>? answers = {};

@@ -1,6 +1,6 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/fonts_weight_helper.dart';
-import 'package:blood_life/features/onboarding/onboarding.dart';
+import 'package:blood_life/features/questionnaires/ui/questionnaires.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => OnBoardingScreen()));
+          context, MaterialPageRoute(builder: (_) => const Questionnaires()));
     });
     super.initState();
   }
@@ -32,39 +32,39 @@ class _SplashScreenState extends State<SplashScreen> {
               'assets/images/logo.png',
             ),
             Padding(
-              padding: EdgeInsets.only(left: 28.w, top: 58.h),
+              padding: EdgeInsets.only(left: 75.w, top: 50.h),
               child: RichText(
                   text: TextSpan(children: [
                 TextSpan(
                   text: 'Life',
                   style: TextStyle(
-                      fontSize: 24.sp,
+                      fontSize: 35.sp,
                       color: ManagerColor.maink7ly,
                       fontWeight: FontWeight.w600),
                 ),
                 TextSpan(
-                  text: 'H',
+                  text: 'h',
                   style: TextStyle(
-                      fontSize: 24.sp,
+                      fontSize: 35.sp,
                       color: ManagerColor.mainred,
                       fontWeight: FontWeight.w600),
                 ),
                 TextSpan(
-                  text: 'up',
+                  text: 'ub',
                   style: TextStyle(
-                      fontSize: 25.sp,
+                      fontSize: 35.sp,
                       color: ManagerColor.maink7ly,
                       fontWeight: FontWeight.w600),
                 ),
               ])),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 98, top: 90),
+              padding: const EdgeInsets.only(left: 100, top: 90),
               child: Text(
-                'blood donation',
+                'Blood Donation',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 15.sp,
+                    fontSize: 10.sp,
                     color: ManagerColor.mainred,
                     fontWeight: FontsWeightHelper.medium),
               ),

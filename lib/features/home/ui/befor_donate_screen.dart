@@ -46,90 +46,85 @@ class _BeforDonateState extends State<BeforDonate> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Befor you Donate',
-                            style: TextStyles.font16K7lybold,
-                          ),
-                          Image.asset(
-                            'assets/images/befordonate.png',
-                            height: 70,
-                            width: 70,
-                          ),
-                        ],
-                      ),
                       SizedBox(
                         height: 15.h,
                       ),
                       Center(
-                        child: Container(
-                          height: 250.h,
-                          width: 300.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: ManagerColor.mainred,
-                              width: 1,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: 10.w, top: 5.h, bottom: 5.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "1-Ensure you meet eligibility criteria,including age weight and overall health",
-                                  style: TextStyles.font16GreyMedium,
-                                ),
-                                Text(
-                                  "2-Eat a nutritious meal, including iron-rich foods, and\nstay well-hydrated",
-                                  style: TextStyles.font16GreyMedium,
-                                ),
-                                Text(
-                                  "3-Get a good night's sleep before donating",
-                                  style: TextStyles.font16GreyMedium,
-                                ),
-                              ],
-                            ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, top: 20, bottom: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Drink plenty of fluids in the 24 hours before. 8 glasses for women and 10 for men.",
+                                      style: TextStyles.font16DarkBlackMedium,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Image.asset(
+                                    "assets/images/drink.png",
+                                    width: 50,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Eat something savoury and drink 750ml (3 good-sized glasses) of fluids in the 3 hours before.",
+                                      style: TextStyles.font16DarkBlackMedium,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Image.asset(
+                                    "assets/images/eat.png",
+                                    width: 50,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Avoid exercise or strenuous activities in the 3 hours before.",
+                                      style: TextStyles.font16DarkBlackMedium,
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Image.asset(
+                                    "assets/images/fitness.png",
+                                    width: 50,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w, right: 35.w, top: 20.h),
-              child: Column(
-                children: [
-                  Text(
-                    'Always consult with medical professionals ',
-                    style: TextStyles.font14mainK7lysemiBold,
-                  ),
-                  Text(
-                    'personalized advice based on your ',
-                    style: TextStyles.font14mainK7lysemiBold,
-                  ),
-                  Text(
-                    'health condition.',
-                    style: TextStyles.font14mainK7lysemiBold,
-                  ),
-                ],
-              ),
-            ),
             SizedBox(
-              height: 15.h,
+              height: 40.h,
             ),
             AppTextButton(
-              textButton: 'OK, Understand it',
+              textButton: 'OK, Understood It',
               onPressed: () {
-                context.pushReplacementNamed(Routes.profileSreen);
+                context.pushReplacementNamed(Routes.myNavigationBar);
               },
             ),
             SizedBox(

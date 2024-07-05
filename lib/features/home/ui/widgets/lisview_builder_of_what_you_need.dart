@@ -31,12 +31,6 @@ class _WhatYouNeededState extends State<WhatYouNeeded> {
       'ontap': Routes.additionalService,
       'text': "Service",
     },
-    // {
-    //   'image': "assets/images/robot.png",
-    //   'ontap': Routes.aiGenerator,
-    //   'text': "Ai Generator",
-
-    // },
   ];
   @override
   Widget build(BuildContext context) {
@@ -70,9 +64,9 @@ class _WhatYouNeededState extends State<WhatYouNeeded> {
                     children: [
                       Image.asset(
                         "${features[i]['image']}",
-                        // color: features.length == 2
-                        //     ? colour
-                        //     : ManagerColor.mainred,
+                        color: features.length == 2
+                            ? colour
+                            : ManagerColor.mainred,
                         width: 50.w,
                         height: 50.h,
                       ),

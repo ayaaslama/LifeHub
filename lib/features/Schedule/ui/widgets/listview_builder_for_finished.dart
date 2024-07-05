@@ -82,6 +82,7 @@ class _FinishedBloodState extends State<FinishedBlood> {
                               Image.asset(
                                 'assets/images/healthIcon.png',
                                 color: ManagerColor.plasmaColor,
+                                width: 40,
                               ),
                               Text(
                                 'Plasma',
@@ -129,6 +130,7 @@ class _FinishedBloodState extends State<FinishedBlood> {
                               Image.asset(
                                 'assets/images/healthIcon.png',
                                 color: ManagerColor.mainred,
+                                width: 40,
                               ),
                               Text(
                                 'Blood',

@@ -39,9 +39,14 @@ class _WashedRcbsState extends State<WashedRcbs> {
     'Cairo Center',
     'Alexandria Center',
     'Giza Center',
-    'Sharm El Sheikh Center',
+    'Shubra El-Kheima Center',
+    'Port Said Center',
+    'Suez Center',
     'Luxor Center',
-    // Add more cities as needed
+    'Mansoura Center',
+    'El-Mahalla El-Kubra Center',
+    'Tanta Center',
+    'Asyut Center',
   ];
 
   List<String> type = [

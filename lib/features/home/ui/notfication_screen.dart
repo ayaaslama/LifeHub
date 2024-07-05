@@ -1,15 +1,12 @@
-import 'package:blood_life/core/helper/extension.dart';
-import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
-import 'package:blood_life/core/widgets/app_bar.dart';
 import 'package:blood_life/core/widgets/app_clicked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class NoteficationScreen extends StatelessWidget {
-  const NoteficationScreen({super.key});
+  const NoteficationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +14,7 @@ class NoteficationScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          'Notefication',
+          'Notification',
           style: TextStyle(
             color: ManagerColor.maink7ly,
             fontSize: 18.sp,
@@ -26,21 +23,19 @@ class NoteficationScreen extends StatelessWidget {
         ),
         leading: IconButton(
           onPressed: () {
-            context.pushNamed(Routes.myNavigationBar);
+            Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back_ios_sharp),
           color: ManagerColor.maink7ly,
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(top: 20.h),
         child: Column(
           children: [
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox(height: 10.h),
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 20, 10),
+              padding: EdgeInsets.fromLTRB(16.w, 0, 20.w, 10.h),
               child: Column(
                 children: [
                   Row(
@@ -58,25 +53,23 @@ class NoteficationScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SvgPicture.asset('assets/svgs/calendar.svg'),
-                      SizedBox(
-                        width: 40.w,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Requesting Success ',
-                            style: TextStyles.font14mainK7lysemiBold,
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Text(
-                            "Congratulations - your Requesting is\n confirmed! We're looking forward to meeting \nwith you and helping you achieve your request ",
-                            style: TextStyles.font13GreyRegular,
-                          )
-                        ],
+                      SizedBox(width: 40.w),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Requesting Success',
+                              style: TextStyles.font14mainK7lysemiBold,
+                            ),
+                            SizedBox(height: 10.h),
+                            Text(
+                              "Congratulations - your Requesting is confirmed! We're looking forward to meeting with you and helping you achieve your request",
+                              style: TextStyles.font13GreyRegular,
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -85,25 +78,23 @@ class NoteficationScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SvgPicture.asset('assets/svgs/calendar-2.svg'),
-                      SizedBox(
-                        width: 40.w,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Schedule Changed ',
-                            style: TextStyles.font14mainK7lysemiBold,
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Text(
-                            "You have successfully changed your \nrequsting Don’t forget to active your reminder",
-                            style: TextStyles.font13GreyRegular,
-                          )
-                        ],
+                      SizedBox(width: 40.w),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Schedule Changed',
+                              style: TextStyles.font14mainK7lysemiBold,
+                            ),
+                            SizedBox(height: 10.h),
+                            Text(
+                              "You have successfully changed your requesting. Don’t forget to activate your reminder.",
+                              style: TextStyles.font13GreyRegular,
+                            )
+                          ],
+                        ),
                       )
                     ],
                   )

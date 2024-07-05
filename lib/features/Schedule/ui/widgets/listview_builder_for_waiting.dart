@@ -84,6 +84,7 @@ class _WaitingState extends State<Waiting> {
                                   Image.asset(
                                     'assets/images/healthIcon.png',
                                     color: ManagerColor.plasmaColor,
+                                    width: 40,
                                   ),
                                   Text(
                                     'Plasma',
@@ -131,6 +132,7 @@ class _WaitingState extends State<Waiting> {
                                   Image.asset(
                                     'assets/images/healthIcon.png',
                                     color: ManagerColor.mainred,
+                                    width: 40,
                                   ),
                                   Text(
                                     'Blood',

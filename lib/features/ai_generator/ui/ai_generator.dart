@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
@@ -50,7 +51,7 @@ class _AiGeneratorState extends State<AiGenerator> {
 
     try {
       var response = await http.post(
-        Uri.parse('https://72e2-197-43-14-149.ngrok-free.app/predict'),
+        Uri.parse('https://1193-197-43-101-128.ngrok-free.app/predict'),
         headers: <String, String>{
           'Content-Type': 'application/json',
         },
@@ -89,7 +90,7 @@ class _AiGeneratorState extends State<AiGenerator> {
         backgroundColor: ManagerColor.mainred,
         centerTitle: true,
         title: Text(
-          'AI Generator',
+          'Disease Diagnosis',
           style: TextStyle(
             color: Colors.white,
             fontSize: 18.sp,
@@ -129,11 +130,13 @@ class _AiGeneratorState extends State<AiGenerator> {
                   style: TextStyle(fontSize: 16.sp),
                 ),
                 SizedBox(height: 20.h),
-                AppTextButton(
-                  textButton: "Predict",
-                  buttonWidth: 200.w,
-                  buttonHeight: 50.h,
-                  onPressed: _predictImage,
+                Center(
+                  child: AppTextButton(
+                    textButton: "Predict",
+                    buttonWidth: 200.w,
+                    buttonHeight: 50.h,
+                    onPressed: _predictImage,
+                  ),
                 ),
                 SizedBox(height: 20.h),
                 _predictionResult != null

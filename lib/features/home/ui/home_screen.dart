@@ -37,8 +37,7 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Hi, Radwa!",
-                                style: TextStyles.font18K7lybold),
+                            Text("Hi, Aya!", style: TextStyles.font18K7lybold),
                             Text("How Are you Today?",
                                 style: TextStyles.font11GreyRegular),
                           ],
@@ -143,7 +142,7 @@ class HomePage extends StatelessWidget {
                         height: 123.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: ManagerColor.lightRed,
+                          color: Color.fromARGB(255, 247, 226, 226),
                         ),
                         child: GestureDetector(
                           onTap: () {
@@ -155,7 +154,8 @@ class HomePage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 5.0),
                                 child: Image.asset(
-                                  "assets/images/Rectangle 6654.png",
+                                  "assets/images/waiter.png",
+                                  width: 70,
                                 ),
                               ),
                               Padding(
@@ -172,7 +172,7 @@ class HomePage extends StatelessWidget {
                         height: 123.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: ManagerColor.lightBlue,
+                          color: Color.fromARGB(255, 247, 226, 226),
                         ),
                         child: GestureDetector(
                           onTap: () {
@@ -184,12 +184,13 @@ class HomePage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 5.0),
                                 child: Image.asset(
-                                  "assets/images/Rectangle 6656.png",
+                                  "assets/images/bloodbank.png",
+                                  width: 70,
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 2.0),
-                                child: Text("In_Center",
+                                child: Text("At Center",
                                     style: TextStyles.font14mainK7lysemiBold),
                               ),
                             ],
@@ -201,7 +202,7 @@ class HomePage extends StatelessWidget {
                         height: 123.h,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: ManagerColor.lightRed,
+                          color: Color.fromARGB(255, 247, 226, 226),
                         ),
                         child: GestureDetector(
                           onTap: () {
@@ -213,7 +214,8 @@ class HomePage extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: 5.0),
                                 child: Image.asset(
-                                  "assets/images/Rectangle 6658.png",
+                                  "assets/images/dessert.png",
+                                  width: 70,
                                 ),
                               ),
                               Padding(

@@ -5,7 +5,6 @@ import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class InCenter extends StatelessWidget {
   const InCenter({super.key});
@@ -23,7 +22,7 @@ class InCenter extends StatelessWidget {
         elevation: 0,
         backgroundColor: ManagerColor.white,
         title: Text(
-          'In-Center',
+          'At the donor centre',
           style: TextStyle(
             color: ManagerColor.maink7ly,
             fontSize: 18.sp,
@@ -41,90 +40,85 @@ class InCenter extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            'In-Center',
-                            style: TextStyles.font16K7lybold,
-                          ),
-                          Image.asset(
-                            'assets/images/Rectangle 6659 (1).png',
-                            height: 70,
-                            width: 70,
-                          ),
-                        ],
-                      ),
                       SizedBox(
                         height: 15.h,
                       ),
                       Center(
-                        child: Container(
-                          height: 250.h,
-                          width: 300.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: ManagerColor.mainred,
-                              width: 1,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: 10.w, top: 5.h, bottom: 5.h),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "1-Follow the guidelines provided by the hospital staff.",
-                                  style: TextStyles.font16GreyMedium,
-                                ),
-                                Text(
-                                  "2-Inform them of any discomfort or unusual \n   symptoms post-donation.",
-                                  style: TextStyles.font16GreyMedium,
-                                ),
-                                Text(
-                                  "3-Take adequate rest and allow your body time to \n   recover.",
-                                  style: TextStyles.font16GreyMedium,
-                                ),
-                              ],
-                            ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, top: 20, bottom: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Bring some ID with you (e.g. Driver's licence or passport).",
+                                      style: TextStyles.font16DarkBlackMedium,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Image.asset(
+                                    "assets/images/ID.png",
+                                    width: 50,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "We'll ask a few questions then check your haemoglobin and blood pressure.",
+                                      style: TextStyles.font16DarkBlackMedium,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Image.asset(
+                                    "assets/images/document.png",
+                                    width: 50,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Sit back on our comfy couch to donate. We'll keep a close eye on you and you can talk to a staff member if you feel uncomfortable.",
+                                      style: TextStyles.font16DarkBlackMedium,
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Image.asset(
+                                    "assets/images/seating.png",
+                                    width: 50,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w, right: 35.w, top: 20.h),
-              child: Column(
-                children: [
-                  Text(
-                    'Always consult with medical professionals ',
-                    style: TextStyles.font14mainK7lysemiBold,
-                  ),
-                  Text(
-                    'personalized advice based on your ',
-                    style: TextStyles.font14mainK7lysemiBold,
-                  ),
-                  Text(
-                    'health condition.',
-                    style: TextStyles.font14mainK7lysemiBold,
-                  ),
-                ],
-              ),
-            ),
             SizedBox(
-              height: 15.h,
+              height: 40.h,
             ),
             AppTextButton(
-              textButton: 'OK, Understand it',
+              textButton: 'OK, Understood It',
               onPressed: () {
-                context.pushReplacementNamed(Routes.profileSreen);
+                context.pushReplacementNamed(Routes.myNavigationBar);
               },
             ),
             SizedBox(

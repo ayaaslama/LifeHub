@@ -40,17 +40,24 @@ class _BloodFiltrationState extends State<BloodFiltration> {
     'Cairo Center',
     'Alexandria Center',
     'Giza Center',
-    'Sharm El Sheikh Center',
+    'Shubra El-Kheima Center',
+    'Port Said Center',
+    'Suez Center',
     'Luxor Center',
-    // Add more cities as needed
+    'Mansoura Center',
+    'El-Mahalla El-Kubra Center',
+    'Tanta Center',
+    'Asyut Center',
   ];
-  List<String> test = [
-    'Complete blood count (CBC)',
-    'Blood Chemistry Panel',
-    'Coagulation Profile',
-    'Blood Typing and Crossmatching',
-    'Blood Gas Analysis',
-    'Infectious Disease Screening',
+  List<String> bloodFiltration = [
+    'Hemodialysis',
+    'Peritoneal dialysis',
+    'Plasma exchange (Plasmapheresis)',
+    'Continuous renal replacement therapy (CRRT)',
+    'Liver dialysis (MARS, Prometheus)',
+    'White blood cell filtration (Leukapheresis)',
+    'Red blood cell filtration (Erythrocytapheresis)',
+    'Platelet filtration (Thrombocytapheresis)'
   ];
   List<String> type = [
     'A+',
@@ -174,7 +181,7 @@ class _BloodFiltrationState extends State<BloodFiltration> {
                                       color: ManagerColor.mainred,
                                     ),
                                     itemBuilder: (BuildContext context) {
-                                      return test.map((String test) {
+                                      return bloodFiltration.map((String test) {
                                         return PopupMenuItem<String>(
                                           value: test,
                                           child: Text(test),

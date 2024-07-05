@@ -47,6 +47,11 @@ class TextStyles {
     fontWeight: FontsWeightHelper.medium,
     color: ManagerColor.maink7ly,
   );
+  static TextStyle font16DarkBlackMedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontsWeightHelper.medium,
+    color: ManagerColor.maink7ly,
+  );
   static TextStyle font18WhihteMedium = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontsWeightHelper.medium,

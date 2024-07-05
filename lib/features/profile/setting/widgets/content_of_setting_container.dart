@@ -5,11 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ContentOfSetting extends StatelessWidget {
-  const ContentOfSetting(
-      {super.key, required this.text, required this.imageAsset});
+  ContentOfSetting(
+      {super.key,
+      required this.text,
+      required this.imageAsset,
+      required this.onTap});
   final String imageAsset;
   final String text;
-
+  Function() onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,23 +28,32 @@ class ContentOfSetting extends StatelessWidget {
                 Container(
                   child: Row(
                     children: [
-                      SvgPicture.asset(
-                        imageAsset,
-                        color: ManagerColor.maink7ly,
+                      GestureDetector(
+                        onTap: onTap,
+                        child: SvgPicture.asset(
+                          imageAsset,
+                          color: ManagerColor.maink7ly,
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 15.w),
-                        child: Text(
-                          text,
-                          style: TextStyles.font14mainK7lyMedium,
+                        child: GestureDetector(
+                          onTap: onTap,
+                          child: Text(
+                            text,
+                            style: TextStyles.font14mainK7lyMedium,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const Icon(
-                  Icons.keyboard_arrow_right,
-                  color: ManagerColor.maink7ly,
+                GestureDetector(
+                  onTap: onTap,
+                  child: const Icon(
+                    Icons.keyboard_arrow_right,
+                    color: ManagerColor.maink7ly,
+                  ),
                 )
               ],
             ),

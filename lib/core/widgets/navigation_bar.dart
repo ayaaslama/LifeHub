@@ -42,12 +42,12 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
               icon: Icon(Icons.home_outlined), label: 'Home'),
           BottomNavigationBarItem(
               icon: Image(
-                image: const AssetImage("assets/images/robot.png"),
+                image: const AssetImage("assets/images/tests-icon.png"),
                 width: 28.w,
                 height: 28.h,
                 color: ManagerColor.maink7ly,
               ),
-              label: 'AI'),
+              label: 'Diagnosis'),
           const BottomNavigationBarItem(
               icon: Icon(Icons.card_giftcard_outlined), label: 'Rewards'),
           const BottomNavigationBarItem(

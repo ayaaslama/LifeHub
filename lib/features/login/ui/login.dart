@@ -16,7 +16,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   String? email, password;
@@ -24,6 +29,7 @@ class Login extends StatelessWidget {
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final secureStorage = const FlutterSecureStorage();
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +40,7 @@ class Login extends StatelessWidget {
             isLoading = true;
           } else if (state is LoginSuccess) {
             isLoading = false;
+
             context.pushNamed(Routes.myNavigationBar);
           } else if (state is LoginFailure) {
             showSnackBar("Something Went Wrong", ManagerColor.mainred);
@@ -109,8 +116,20 @@ class Login extends StatelessWidget {
                             icon: Icons.lock_outlined,
                             useicon: true,
                             keyboardType: TextInputType.visiblePassword,
+                            obscureText: _obscureText,
+                            suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                }),
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),

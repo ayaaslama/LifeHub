@@ -3,6 +3,7 @@ import 'package:blood_life/core/routing/routes.dart';
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_text_button.dart';
+import 'package:blood_life/core/widgets/snack_bar.dart';
 import 'package:blood_life/features/questionnaires/ui/listview_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,14 +17,26 @@ class Questionnaires extends StatefulWidget {
 
 class _QuestionnairesState extends State<Questionnaires> {
   final TextEditingController accept = TextEditingController();
+  final Questions testAnswer = Questions();
 
-  void handleGenderChange(String value, bool isChecked) {
-    if (isChecked) {
-      accept.text = value;
+  void handleSubmit() {
+    final answers = testAnswer.answers;
+    final lastQuestionValue =
+        answers!["In the last 3 months, have you had a vaccination?"];
+
+    if (lastQuestionValue == 'yes') {
+      showSnackBar(
+        "Sorry, you cannot donate right now because the required time interval since your last donation has not yet passed. Please read the instructions in the settings for more information.",
+        ManagerColor.mainred,
+      );
+    } else if (answers!.values.every((value) => value == 'no')) {
+      context.pushNamed(Routes.donateBlood);
     } else {
-      accept.clear();
+      showSnackBar(
+        "Please review the instructions again.",
+        ManagerColor.mainred,
+      );
     }
-    print('Gender: $value, Checked: $isChecked');
   }
 
   @override
@@ -54,13 +67,13 @@ class _QuestionnairesState extends State<Questionnaires> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Fill up the following questionnaries and become a doner",
+                "Fill up the following questionnaires and become a donor",
                 style: TextStyles.font14mainK7lysemiBold,
               ),
-              const Questions(),
+              Questions(),
               Center(
                 child: Text(
-                  "By clicking,you agree to our terms and condition",
+                  "By clicking, you agree to our terms and conditions",
                   style: TextStyles.font14mainK7lysemiBold,
                 ),
               ),
@@ -68,12 +81,13 @@ class _QuestionnairesState extends State<Questionnaires> {
                 height: 15.h,
               ),
               Center(
-                  child: AppTextButton(
-                textButton: 'Become a doner',
-                buttonWidth: 350.w,
-                buttonHeight: 55.h,
-                onPressed: () => context.pushNamed(Routes.donateBlood),
-              ))
+                child: AppTextButton(
+                  textButton: 'Become a donor',
+                  buttonWidth: 350.w,
+                  buttonHeight: 55.h,
+                  onPressed: handleSubmit,
+                ),
+              ),
             ],
           ),
         ),

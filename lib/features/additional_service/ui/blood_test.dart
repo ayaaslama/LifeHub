@@ -7,7 +7,6 @@ import 'package:blood_life/core/widgets/app_text_button.dart';
 import 'package:blood_life/core/widgets/app_text_feild.dart';
 import 'package:blood_life/core/widgets/loading.dart';
 import 'package:blood_life/core/widgets/snack_bar.dart';
-import 'package:blood_life/features/additional_service/logic/cubit/bloodfilteration_cubit.dart';
 import 'package:blood_life/features/additional_service/logic/cubit/bloodtest_cubit.dart';
 import 'package:blood_life/features/signup/ui/widgets/date_selection_form.dart';
 import 'package:flutter/material.dart';
@@ -41,17 +40,29 @@ class _BloodTestState extends State<BloodTest> {
     'Cairo Center',
     'Alexandria Center',
     'Giza Center',
-    'Sharm El Sheikh Center',
+    'Shubra El-Kheima Center',
+    'Port Said Center',
+    'Suez Center',
     'Luxor Center',
-    // Add more cities as needed
+    'Mansoura Center',
+    'El-Mahalla El-Kubra Center',
+    'Tanta Center',
+    'Asyut Center',
   ];
-  List<String> test = [
-    'Complete blood count (CBC)',
+  List<String> tests = [
+    'Complete Blood Count (CBC)',
+    'Basic Metabolic Panel (BMP) ',
+    'Lipid Panel',
+    'Liver Function Tests (LFTs)',
+    'Thyroid Function Tests',
+    'Coagulation Panel or Prothrombin Time (PT) ',
+    ' Partial Thromboplastin Time (PTT)',
     'Blood Chemistry Panel',
-    'Coagulation Profile',
-    'Blood Typing and Crossmatching',
+    'Blood Type and Crossmatch',
+    'C-reactive Protein (CRP)',
+    'Erythrocyte Sedimentation Rate (ESR)',
     'Blood Gas Analysis',
-    'Infectious Disease Screening',
+    'Infectious Disease Screening'
   ];
   List<String> type = [
     'A+',
@@ -71,7 +82,7 @@ class _BloodTestState extends State<BloodTest> {
         backgroundColor: ManagerColor.mainred,
         centerTitle: true,
         title: Text(
-          'Blood  Fitration',
+          'Blood Tests',
           style: TextStyle(
             color: Colors.white,
             fontSize: 18.sp,
@@ -108,7 +119,7 @@ class _BloodTestState extends State<BloodTest> {
                     children: [
                       const Center(
                         child: Text(
-                          'Blood  Fitration ',
+                          'Blood  Tests ',
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
@@ -157,7 +168,7 @@ class _BloodTestState extends State<BloodTest> {
                             ),
                             MyTextField(
                               item: FieldItem(
-                                  fieldName: 'Type of Filteration ',
+                                  fieldName: 'Type of Test ',
                                   validator: (value) {
                                     return Validator.validateAnotherField(
                                         value);
@@ -175,7 +186,7 @@ class _BloodTestState extends State<BloodTest> {
                                       color: ManagerColor.mainred,
                                     ),
                                     itemBuilder: (BuildContext context) {
-                                      return test.map((String test) {
+                                      return tests.map((String test) {
                                         return PopupMenuItem<String>(
                                           value: test,
                                           child: Text(test),

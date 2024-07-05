@@ -40,7 +40,7 @@ class CodeForVerfiy extends StatelessWidget {
             isLoading = true;
           } else if (state is CodeVerifySuccess) {
             isLoading = false;
-            context.pushNamed(Routes.home);
+            context.pushNamed(Routes.myNavigationBar);
           } else if (state is CodeVerifyFailure) {
             isLoading = false;
             showSnackBar("Something Went Wrong", ManagerColor.mainred);

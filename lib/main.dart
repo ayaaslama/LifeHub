@@ -1,6 +1,5 @@
 import 'package:blood_life/core/helper/constants.dart';
 import 'package:blood_life/core/routing/app_router.dart';
-import 'package:blood_life/core/widgets/navigation_bar.dart';
 import 'package:blood_life/features/additional_service/logic/cubit/bloodfilteration_cubit.dart';
 import 'package:blood_life/features/additional_service/logic/cubit/bloodrbcs_cubit.dart';
 import 'package:blood_life/features/additional_service/logic/cubit/bloodtest_cubit.dart';
@@ -13,6 +12,7 @@ import 'package:blood_life/features/profile/logic/cubit/personal_cubit.dart';
 import 'package:blood_life/features/request/logic/cubit/requestblood_cubit.dart';
 import 'package:blood_life/features/request/logic/cubit/requestplasma_cubit.dart';
 import 'package:blood_life/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:blood_life/features/splash/splash_screen.dart';
 import 'package:blood_life/features/verifiction/logic/cubit/cubit/code_verify_cubit.dart';
 import 'package:blood_life/features/verifiction/logic/cubit/cubit/email_verify_cubit.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +84,7 @@ class BloodLife extends StatelessWidget {
             primaryColor: Colors.grey,
             scaffoldBackgroundColor: Colors.white,
           ),
-          home: MyNavigationBar(),
+          home: const SplashScreen(),
 
           debugShowCheckedModeBanner: false,
           scaffoldMessengerKey: scaffoldKey,

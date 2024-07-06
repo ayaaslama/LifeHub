@@ -1,6 +1,6 @@
 import 'package:blood_life/core/theaming/color.dart';
 import 'package:blood_life/core/theaming/fonts_weight_helper.dart';
-import 'package:blood_life/features/questionnaires/ui/questionnaires.dart';
+import 'package:blood_life/features/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => const Questionnaires()));
+          context, MaterialPageRoute(builder: (_) => const OnBoardingScreen()));
     });
     super.initState();
   }

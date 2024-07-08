@@ -8,37 +8,46 @@ part 'personal_state.dart';
 
 class PersonalCubit extends Cubit<PersonalState> {
   PersonalCubit() : super(PersonalInitial());
+
   Crud crud = Crud();
   final secureStorage = const FlutterSecureStorage();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   fetchData();
-  // }
+  String _userName = '';
+  String _email = '';
+  String _phone = '';
+  String _bloodBank = '';
+  String _gender = '';
+  String _nationalID = '';
 
-  Future<void> fetchData(
-      {required userName,
-      required email,
-      required phone,
-      required bloodBank,
-      required gender,
-      required nationalID}) async {
+  String get userName => _userName;
+  String get email => _email;
+  String get phone => _phone;
+  String get bloodBank => _bloodBank;
+  String get gender => _gender;
+  String get nationalID => _nationalID;
+
+  Future<void> fetchData() async {
     try {
       String? storedEmail = await secureStorage.read(key: 'email');
       if (storedEmail != null) {
         emit(PersonalLoading());
         final data =
             await crud.fetchData("$linkServerName/personal?Email=$storedEmail");
-        setState(() {
-          userName = data['userName'];
-          email = data['email'];
-          phone = data['phone'];
-          bloodBank = data['bloodBank'];
-          gender = data['gender'];
-          nationalID = data['nationalID'];
-        });
-        emit(Personalsuccess());
+        _userName = data['userName'];
+        _email = data['email'];
+        _phone = data['phone'];
+        _bloodBank = data['bloodBank'];
+        _gender = data['gender'];
+        _nationalID = data['nationalID'];
+        await secureStorage.write(key: 'userName', value: _userName);
+        emit(Personalsuccess(
+          userName: _userName,
+          email: _email,
+          phone: _phone,
+          bloodBank: _bloodBank,
+          gender: _gender,
+          nationalID: _nationalID,
+        ));
         print('Fetched data successfully');
       } else {
         emit(Personalfailure());
@@ -49,6 +58,4 @@ class PersonalCubit extends Cubit<PersonalState> {
       print('Error fetching data: $e');
     }
   }
-
-  void setState(Null Function() param0) {}
 }

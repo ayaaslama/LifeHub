@@ -16,20 +16,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class Login extends StatefulWidget {
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class Login extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
+
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+
   String? email, password;
+
   bool isLoading = false;
+
   final emailFocusNode = FocusNode();
+
   final passwordFocusNode = FocusNode();
+
   final secureStorage = const FlutterSecureStorage();
-  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -116,18 +116,21 @@ class _LoginState extends State<Login> {
                             icon: Icons.lock_outlined,
                             useicon: true,
                             keyboardType: TextInputType.visiblePassword,
-                            obscureText: _obscureText,
+                            obscureText: state is LoginPasswordVisibilityChanged
+                                ? state.obscureText
+                                : true,
                             suffixIcon: IconButton(
-                                icon: Icon(
-                                  _obscureText
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _obscureText = !_obscureText;
-                                  });
-                                }),
+                              icon: Icon(
+                                state is LoginPasswordVisibilityChanged &&
+                                        !state.obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                              onPressed: () {
+                                BlocProvider.of<LoginCubit>(context)
+                                    .togglePasswordVisibility();
+                              },
+                            ),
                           ),
                         )
                       ],

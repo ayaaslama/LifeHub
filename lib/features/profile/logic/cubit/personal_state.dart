@@ -3,10 +3,26 @@ part of 'personal_cubit.dart';
 @immutable
 sealed class PersonalState {}
 
-final class PersonalInitial extends PersonalState {}
+class PersonalInitial extends PersonalState {}
 
-final class PersonalLoading extends PersonalState {}
+class PersonalLoading extends PersonalState {}
 
-final class Personalsuccess extends PersonalState {}
+class Personalsuccess extends PersonalState {
+  final String userName;
+  final String email;
+  final String phone;
+  final String bloodBank;
+  final String gender;
+  final String nationalID;
 
-final class Personalfailure extends PersonalState {}
+  Personalsuccess({
+    required this.userName,
+    required this.email,
+    required this.phone,
+    required this.bloodBank,
+    required this.gender,
+    required this.nationalID,
+  });
+}
+
+class Personalfailure extends PersonalState {}

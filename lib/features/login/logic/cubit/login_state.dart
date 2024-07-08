@@ -10,3 +10,9 @@ final class LoginSuccess extends LoginState {}
 final class LoginLoading extends LoginState {}
 
 final class LoginFailure extends LoginState {}
+
+final class LoginPasswordVisibilityChanged extends LoginState {
+  final bool obscureText;
+
+  LoginPasswordVisibilityChanged(this.obscureText);
+}

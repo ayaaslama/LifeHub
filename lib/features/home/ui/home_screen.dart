@@ -5,7 +5,9 @@ import 'package:blood_life/core/theaming/stlye.dart';
 import 'package:blood_life/core/widgets/app_clicked_text.dart';
 import 'package:blood_life/features/home/ui/widgets/donation_request.dart';
 import 'package:blood_life/features/home/ui/widgets/lisview_builder_of_what_you_need.dart';
+import 'package:blood_life/features/profile/logic/cubit/personal_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
@@ -37,7 +39,17 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Hi, Aya!", style: TextStyles.font18K7lybold),
+                            BlocBuilder<PersonalCubit, PersonalState>(
+                              builder: (context, state) {
+                                if (state is Personalsuccess) {
+                                  return Text("Hi, ${state.userName}!",
+                                      style: TextStyles.font18K7lybold);
+                                } else {
+                                  return Text("Loading...",
+                                      style: TextStyles.font18K7lybold);
+                                }
+                              },
+                            ),
                             Text("How Are you Today?",
                                 style: TextStyles.font11GreyRegular),
                           ],

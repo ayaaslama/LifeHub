@@ -8,6 +8,13 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
   Crud crud = Crud();
+  bool _obscureText = true;
+
+  void togglePasswordVisibility() {
+    _obscureText = !_obscureText;
+    emit(LoginPasswordVisibilityChanged(_obscureText));
+  }
+
   Future<void> login({required String email, required String password}) async {
     emit(LoginLoading());
 
